@@ -1,6 +1,6 @@
 import React from 'react';
 import "./ForgotPassword.css";
-
+import { Link } from 'react-router-dom'
 function ForgotPassword() {
   return (
     <div className='whole'>
@@ -16,7 +16,7 @@ function ForgotPassword() {
           <button className='send-btn'><a href='#'>Send Reset Link</a></button>
         </div>
         <div className='back-to-login'>
-          <a href='#'>Back to Login</a>
+         <Link to="/">Back to Login</Link>
         </div>
       </div>
     </div>
