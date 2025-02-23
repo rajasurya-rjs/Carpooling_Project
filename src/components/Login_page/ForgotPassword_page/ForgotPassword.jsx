@@ -10,7 +10,6 @@ function ForgotPassword() {
     try {
       await sendPasswordResetEmail(auth, email);
       console.log("Password reset email sent");
-      // ...notify user...
     } catch (error) {
       console.error("Reset password error:", error);
       // ...handle error...

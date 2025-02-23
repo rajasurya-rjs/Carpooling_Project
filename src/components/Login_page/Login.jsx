@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState(""); // new state for error message
+  const [errorMsg, setErrorMsg] = useState(""); 
 
   const handleGoogleSignIn = async () => {
     const provider = new GoogleAuthProvider();
@@ -47,9 +47,6 @@ function Login() {
           <div className="google-box" onClick={handleGoogleSignIn}>
             <img className="google-img" src="/google.svg" alt="Google" />
           </div>
-          <div className="apple-box">
-            <img className="apple-img" src="apple.svg" alt="Apple" />
-          </div>
         </div>
         <div className="or-text">
           <h2 className="or_text1">OR</h2>
@@ -62,7 +59,7 @@ function Login() {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                setErrorMsg(""); // clear error on change
+                setErrorMsg("");
               }}
             />
           </div>
@@ -73,7 +70,7 @@ function Login() {
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setErrorMsg(""); // clear error on change
+                setErrorMsg("");
               }}
             />
           </div>
