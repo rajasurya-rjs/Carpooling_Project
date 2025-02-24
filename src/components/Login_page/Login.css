@@ -12,7 +12,9 @@
     align-items: center;
     height: 100vh;
   }
-  
+  .nav{
+    width: 100vw;
+  }
   
   .login-box {
     background: white;

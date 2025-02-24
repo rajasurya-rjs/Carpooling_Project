@@ -25,7 +25,7 @@ function SignUp() {
       // Update profile with the entered username
       await updateProfile(userCredential.user, { displayName: username });
       console.log("User signed up:", userCredential.user);
-      navigate("/signed-in");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Sign Up Error:", error.message);
       // ...handle errors...
@@ -37,7 +37,7 @@ function SignUp() {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("Google Sign Up User:", result.user);
-      navigate("/signed-in");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Google Sign Up Error:", error);
       // ...handle error...

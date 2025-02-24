@@ -15,7 +15,7 @@ function Login() {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("User:", result.user);
-      navigate("/signed-in");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Google Sign-In Error:", error);
     }
@@ -25,8 +25,8 @@ function Login() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in:", userCredential.user);
-      setErrorMsg(""); // clear error on success
-      navigate("/signed-in");
+      setErrorMsg("");
+      navigate("/user-dashboard");
     } catch (error) {
       if (error.code === "auth/wrong-password") {
         setErrorMsg("Wrong password");
