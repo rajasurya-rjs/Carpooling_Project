@@ -7,28 +7,28 @@ import {
   GoogleAuthProvider, 
   signInWithPopup 
 } from "firebase/auth";
-import "../ForgotPassword_page/ForgotPassword.css"; // reusing same css
+import "../ForgotPassword_page/ForgotPassword.css";
 
 function SignUp() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState(""); // renamed from name to username
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignUp = async () => {
     try {
-      // Ensure email and password are not empty
+    
       if (!email || !password) {
         throw new Error("Email and password must be provided");
       }
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Update profile with the entered username
+   
       await updateProfile(userCredential.user, { displayName: username });
       console.log("User signed up:", userCredential.user);
       navigate("/user-dashboard");
     } catch (error) {
       console.error("Sign Up Error:", error.message);
-      // ...handle errors...
+
     }
   };
 
@@ -40,7 +40,7 @@ function SignUp() {
       navigate("/user-dashboard");
     } catch (error) {
       console.error("Google Sign Up Error:", error);
-      // ...handle error...
+   
     }
   };
 
@@ -50,7 +50,7 @@ function SignUp() {
         <h2 className="forgot-text">Sign Up</h2>
         <p className="forgot-desc">Create a new account</p>
         <div className="form-box">
-          {/* Updated username input using same CSS as email */}
+        
           <div className="email-input">
             <input
               type="text"
@@ -79,7 +79,7 @@ function SignUp() {
         <div className="send-button">
           <button className="send-btn" onClick={handleSignUp}>Sign Up</button>
         </div>
-        {/* Google Sign Up */}
+      
         <div className="google-box" onClick={handleGoogleSignUp} style={{ cursor: "pointer", marginTop: "1rem" }}>
           <img className="google-img" src="/google.svg" alt="Google" />
           {/* <span>Sign Up with Google</span> */}

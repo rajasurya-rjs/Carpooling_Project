@@ -8,7 +8,6 @@ function Page() {
       <h1 className="main-heading">Create Your Ride !!!</h1>
       <p className='heading-p'>Share your journey with others! </p>
       <div className="content-container">
-        {/* Left: Ride Creation Form */}
         <div className="form-container">
           <h2>Create a Ride</h2>
           <form className="ride-form">
@@ -16,12 +15,10 @@ function Page() {
               <label>From</label>
               <input type="text" placeholder="Enter starting point" />
             </div>
-
             <div className="form-group">
               <label>To</label>
               <input type="text" placeholder="Enter destination" />
             </div>
-
             <div className="form-group">
               <label>Date</label>
               <input type="date" />

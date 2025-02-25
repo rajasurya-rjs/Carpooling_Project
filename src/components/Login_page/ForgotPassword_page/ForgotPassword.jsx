@@ -12,7 +12,6 @@ function ForgotPassword() {
       console.log("Password reset email sent");
     } catch (error) {
       console.error("Reset password error:", error);
-      // ...handle error...
     }
   };
 
