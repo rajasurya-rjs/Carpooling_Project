@@ -1,7 +1,7 @@
 import React from "react";
 import "./User_dash.css";
 import { Link } from "react-router-dom";
-function User_dash() {
+function User() {
   return (
     <div className="main">
       <div className="nav">
@@ -15,9 +15,10 @@ function User_dash() {
 
         <div className="wrapper2">
           <div className="help">Help</div>
-          <div className="switch-driver">
-            <Link to="/driver">Switch to Driver</Link></div>
-            
+          <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
+  <div className="switch-driver">Switch to Driver</div>
+</Link>
+
           <div className="profile">Profile</div>
         </div>
       </div>
@@ -91,4 +92,4 @@ function User_dash() {
   );
 }
 
-export default User_dash
+export default User
