@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -49,7 +48,8 @@ body {
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.wrapper1, .wrapper2 {
+.wrapper1,
+.wrapper2 {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -102,7 +102,8 @@ body {
   background-color: rgba(241, 245, 249, 0.8);
 }
 
-.help, .profile {
+.help,
+.profile {
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
   color: var(--text-secondary);
@@ -111,7 +112,8 @@ body {
   font-weight: 500;
 }
 
-.help:hover, .profile:hover {
+.help:hover,
+.profile:hover {
   background-color: rgba(241, 245, 249, 0.8);
   color: var(--primary-color);
   transform: translateY(-2px);
@@ -135,7 +137,7 @@ body {
 
 .hero-section {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
-              url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2021&q=80');
+    url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2021&q=80');
   background-size: cover;
   background-position: center;
   padding: 6rem 2rem;
@@ -196,8 +198,15 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .input-filed input {
@@ -243,7 +252,9 @@ body {
   margin: 4rem 0;
 }
 
-.cont1, .cont2, .cont3 {
+.cont1,
+.cont2,
+.cont3 {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 2.5rem;
   border-radius: 1.5rem;
@@ -253,7 +264,9 @@ body {
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.cont1:hover, .cont2:hover, .cont3:hover {
+.cont1:hover,
+.cont2:hover,
+.cont3:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
   background-color: rgba(255, 255, 255, 0.95);
@@ -335,13 +348,17 @@ body {
     gap: 1rem;
   }
 
-  .wrapper1, .wrapper2 {
+  .wrapper1,
+  .wrapper2 {
     width: 100%;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .feature-item, .help, .profile, .switch-driver {
+  .feature-item,
+  .help,
+  .profile,
+  .switch-driver {
     width: 100%;
     text-align: center;
   }
@@ -355,7 +372,7 @@ body {
   }
 
   .content {
-      gap: 10px;
+    gap: 10px;
     padding: 2rem 1rem;
   }
 
@@ -382,7 +399,9 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .wrapper1, .wrapper2 {
+
+  .wrapper1,
+  .wrapper2 {
     gap: 1rem;
   }
 
