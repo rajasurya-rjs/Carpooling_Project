@@ -33,7 +33,6 @@ body {
   flex-direction: column;
 }
 
-
 .nav {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 1rem 2rem;
@@ -137,7 +136,7 @@ body {
 
 .hero-section {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
-    url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2021&q=80');
+    url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800');
   background-size: cover;
   background-position: center;
   padding: 6rem 2rem;
@@ -184,17 +183,56 @@ body {
   width: 100%;
 }
 
-.input-filed {
+/* Updated input-field styles */
+.input-field {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 1.5rem;
   box-shadow: var(--shadow-lg);
   margin-bottom: 3rem;
-  flex-wrap: wrap;
   backdrop-filter: blur(10px);
   animation: slideUp 0.8s ease-out;
+  justify-content: space-between;
+}
+
+.input-field input {
+  flex: 1 1 220px;
+  padding: 1rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-width: 220px;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+}
+
+.input-field .search {
+  flex: 1 1 220px;
+  min-width: 220px;
+  padding: 1rem 2rem;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.input-field .search:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 @keyframes slideUp {
@@ -209,67 +247,11 @@ body {
   }
 }
 
-.input-filed input {
-  flex: 1;
-  min-width: 200px;
-  padding: 1rem 1.5rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.input-filed input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-  transform: translateY(-1px);
-}
-
-.search {
-  padding: 1rem 2.5rem;
-  background: var(--gradient);
-  color: white;
-  border: none;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 140px;
-  box-shadow: var(--shadow-md);
-}
-
-.search:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--shadow-lg);
-}
-
 .context {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 4rem 0;
-}
-
-.cont1,
-.cont2,
-.cont3 {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2.5rem;
-  border-radius: 1.5rem;
-  box-shadow: var(--shadow-md);
-  transition: all 0.4s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.cont1:hover,
-.cont2:hover,
-.cont3:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .context h3 {
@@ -295,6 +277,26 @@ body {
   color: var(--text-secondary);
   line-height: 1.7;
   font-size: 1.1rem;
+}
+
+.cont1,
+.cont2,
+.cont3 {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.cont1:hover,
+.cont2:hover,
+.cont3:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .drive {
@@ -341,6 +343,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -376,16 +379,13 @@ body {
     padding: 2rem 1rem;
   }
 
-  .input-filed {
+  .input-field {
     flex-direction: column;
     padding: 1.5rem;
   }
 
-  .input-filed input {
-    width: 100%;
-  }
-
-  .search {
+  .input-field input,
+  .input-field .search {
     width: 100%;
   }
 
@@ -399,7 +399,6 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-
   .wrapper1,
   .wrapper2 {
     gap: 1rem;
@@ -409,15 +408,15 @@ body {
     padding: 1rem;
   }
 
-  .input-filed {
-    gap: 0.75rem;
-  }
-
   .heading h1 {
     font-size: 3rem;
   }
 
   .hero-section {
     padding: 5rem 2rem;
+  }
+
+  .input-field {
+    gap: 0.75rem;
   }
 }
