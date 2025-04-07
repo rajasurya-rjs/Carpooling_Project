@@ -11,7 +11,7 @@ function ShowRides() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:8080?from=${from}&to=${to}&date=${date}`);
+        const response = await fetch(`http://localhost:8080/rides/filter?from=${from}&to=${to}&date=${date}`);
         if (!response.ok) {
           throw new Error("Failed to fetch rides");
         }
@@ -41,7 +41,7 @@ function ShowRides() {
               <h3>Ride Details</h3>
               <p><strong>From:</strong> {ride.from}</p>
               <p><strong>To:</strong> {ride.to}</p>
-              <p><strong>Date:</strong> {ride.date}</p>
+              <p><strong>Date:</strong> {ride.time}</p>
             </div>
           ))}
         </div>
