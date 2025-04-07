@@ -6,33 +6,36 @@ function CreateRide({ onClose }) {
     from: "",
     to: "",
     time: "",
-    seats: "",
-    price: "",
+    seats: 0,
+    price: 0,
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if (name === "seats" || (name === "price" && value)) {
+      value = parseInt(value, 10); // Convert to integer
+    }
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Close the popup immediately
+    onClose();
+
     // Convert time to yyyy-mm-dd format
     const formattedTime = new Date(formData.time).toISOString().split("T")[0];
     const updatedFormData = { ...formData, time: formattedTime };
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/add",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedFormData),
-        }
-      );
+      const response = await fetch("http://localhost:8080/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedFormData),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to create ride");
@@ -40,7 +43,6 @@ function CreateRide({ onClose }) {
 
       const data = await response.json();
       console.log("Ride created successfully:", data);
-      onClose(); // Close the modal after successful submission
     } catch (error) {
       console.error("Error creating ride:", error);
     }
@@ -106,7 +108,7 @@ function CreateRide({ onClose }) {
               placeholder="Enter price"
             />
           </div>
-          <button type="submit" className="create-ride-submit-button" onClick={onClose}>
+          <button type="submit" className="create-ride-submit-button">
             🚗 Create Ride
           </button>
           <button
