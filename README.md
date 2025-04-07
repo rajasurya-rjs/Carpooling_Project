@@ -7,10 +7,9 @@ This project is a carpooling application designed to connect users who want to s
 
 ## Prerequisites
 Before running the application, ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (version 14 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Go](https://golang.org/) (version 1.20 or higher)
 - [Git](https://git-scm.com/)
-- A compatible database (e.g., MySQL, MongoDB, etc., depending on the project setup)
+- A PostgreSQL database
 
 ---
 
@@ -19,57 +18,41 @@ Before running the application, ensure you have the following installed:
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd Carpooling_Project
+cd Carpooling_Project/backend
 ```
 
 ### 2. Install Dependencies
-Run the following command to install all required dependencies:
+Run the following command to install all required Go modules:
 ```bash
-npm install
-```
-or, if using yarn:
-```bash
-yarn install
+go mod tidy
 ```
 
 ### 3. Configure Environment Variables
-Create a `.env` file in the root directory and add the required environment variables. Refer to `.env.example` (if available) for guidance.
+Create a `.env` file in the `backend` directory and add the required environment variables. Refer to the example below:
 
 Example:
 ```
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
-PORT=3000
+DB_DSN=host=localhost user=yourusername password=yourpassword dbname=yourdbname port=5432 sslmode=disable
 ```
 
 ### 4. Set Up the Database
-- Ensure your database server is running.
-- Run the migration or seed scripts (if applicable) to set up the database schema and initial data:
-```bash
-npm run migrate
-npm run seed
-```
+- Ensure your PostgreSQL server is running.
+- The application will automatically migrate the database schema when started.
 
 ### 5. Start the Application
-Run the following command to start the application:
+Run the following command to start the backend server:
 ```bash
-npm start
-```
-or, for development mode with hot-reloading:
-```bash
-npm run dev
+go run main.go
 ```
 
-The application should now be running at `http://localhost:<PORT>`.
+The application should now be running at `http://localhost:8080`.
 
 ---
 
-## Testing
-To run tests, use:
-```bash
-npm test
-```
+## API Endpoints
+- `GET /rides` - Fetch all available rides.
+- `POST /add` - Add a new ride.
+- `GET /rides/filter` - Filter rides based on origin, destination, and date.
 
 ---
 
@@ -82,7 +65,7 @@ npm test
 
 ## Troubleshooting
 If you encounter issues, check the following:
-- Ensure all dependencies are installed correctly.
+- Ensure all dependencies are installed correctly using `go mod tidy`.
 - Verify your `.env` file is configured properly.
 - Check the logs for error messages.
 
