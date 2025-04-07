@@ -21,31 +21,31 @@ function User() {
   }
 
   return (
-    <div className="main">
-      <div className="nav">
-        <div className="wrapper1">
-          <div className="logo">Logo</div>
-          <div className="feature-item">Home</div>
-          <div className="feature-item">Messages</div>
-          <div className="feature-item">Calendar</div>
-          <div className="feature-item">Notifications</div>
+    <div className="user-dash-main">
+      <div className="user-dash-nav">
+        <div className="user-dash-wrapper1">
+          <div className="user-dash-logo">Logo</div>
+          <div className="user-dash-feature-item">Home</div>
+          <div className="user-dash-feature-item">Messages</div>
+          <div className="user-dash-feature-item">Calendar</div>
+          <div className="user-dash-feature-item">Notifications</div>
         </div>
 
-        <div className="wrapper2">
-          <div className="help">Help</div>
+        <div className="user-dash-wrapper2">
+          <div className="user-dash-help">Help</div>
           <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="switch-driver">Switch to Driver</div>
+            <div className="user-dash-switch-driver">Switch to Driver</div>
           </Link>
-          <div className="profile">Profile</div>
+          <div className="user-dash-profile">Profile</div>
         </div>
       </div>
 
-      <div className="content">
-        <div className="heading">
+      <div className="user-dash-content">
+        <div className="user-dash-heading">
           <h1>Welcome Back! Travel to thousands of destinations at low prices</h1>
         </div>
 
-        <form className="input-field" onSubmit={handleSubmit}>
+        <form className="user-dash-input-field" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Leaving from"
@@ -69,37 +69,39 @@ function User() {
             value={passengerCount}
             onChange={(e) => setPassengerCount(e.target.value)}
           />
-          <button type="submit" className="search">
+          <button type="submit" className="user-dash-search">
             Search
           </button>
         </form>
 
-        <div className="context">
-          <div className="cont1">
+        <div className="user-dash-context">
+          <div className="user-dash-cont1">
             <h3>Travel at low prices</h3>
             <p>Wherever you’re going, there’s a carpool that will get you there for less.</p>
           </div>
-          <div className="cont2">
+          <div className="user-dash-cont2">
             <h3>Trustworthy and simple</h3>
             <p>
               We check reviews, profiles and IDs, so you know who you’re travelling with; and our
               app is both simple and secure thanks to powerful technology.
             </p>
           </div>
-          <div className="cont3">
+          <div className="user-dash-cont3">
             <h3>Proximity makes it easier</h3>
             <p>Wherever you’re going, there’s a carpool that will get you there for less.</p>
           </div>
         </div>
 
-        <div className="drive">
+        <div className="user-dash-drive">
           <h2>Where do you want to drive to?</h2>
           <p>
             Sharing a carpool is a great way to travel. It's affordable, comfortable and
             eco-friendly! If you're driving with an empty car, consider publishing a carpool ride to
             save costs and travel with some company.
           </p>
-          <button className="offerride" onClick={() => navigate('/crete-ride')}>Offer Ride</button>
+          <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
+            <button className="user-dash-offerride">Offer Ride</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -27,13 +27,17 @@ body {
   line-height: 1.5;
 }
 
-.main {
+.user-dash-main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100vw; /* Ensure it spans the full width of the viewport */
+  max-width: 100%; /* Prevent any restrictions on width */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
 }
 
-.nav {
+.user-dash-nav {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 1rem 2rem;
   display: flex;
@@ -47,14 +51,14 @@ body {
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.wrapper1,
-.wrapper2 {
+.user-dash-wrapper1,
+.user-dash-wrapper2 {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.logo {
+.user-dash-logo {
   font-size: 1.5rem;
   font-weight: 700;
   background: var(--gradient);
@@ -66,11 +70,11 @@ body {
   transition: all 0.3s ease;
 }
 
-.logo:hover {
+.user-dash-logo:hover {
   transform: scale(1.05);
 }
 
-.feature-item {
+.user-dash-feature-item {
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
   color: var(--text-secondary);
@@ -80,7 +84,7 @@ body {
   position: relative;
 }
 
-.feature-item::after {
+.user-dash-feature-item::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -92,17 +96,17 @@ body {
   transform: translateX(-50%);
 }
 
-.feature-item:hover::after {
+.user-dash-feature-item:hover::after {
   width: 80%;
 }
 
-.feature-item:hover {
+.user-dash-feature-item:hover {
   color: var(--primary-color);
   background-color: rgba(241, 245, 249, 0.8);
 }
 
-.help,
-.profile {
+.user-dash-help,
+.user-dash-profile {
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
   color: var(--text-secondary);
@@ -111,14 +115,14 @@ body {
   font-weight: 500;
 }
 
-.help:hover,
-.profile:hover {
+.user-dash-help:hover,
+.user-dash-profile:hover {
   background-color: rgba(241, 245, 249, 0.8);
   color: var(--primary-color);
   transform: translateY(-2px);
 }
 
-.switch-driver {
+.user-dash-switch-driver {
   background: var(--gradient);
   color: white;
   padding: 0.75rem 1.5rem;
@@ -129,12 +133,12 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.switch-driver:hover {
+.user-dash-switch-driver:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
-.hero-section {
+.user-dash-hero-section {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
     url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800');
   background-size: cover;
@@ -144,7 +148,7 @@ body {
   position: relative;
 }
 
-.heading {
+.user-dash-heading {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
@@ -152,7 +156,7 @@ body {
   z-index: 1;
 }
 
-.heading h1 {
+.user-dash-heading h1 {
   font-size: 4rem;
   font-weight: 800;
   color: var(--primary-color);
@@ -173,18 +177,17 @@ body {
   }
 }
 
-.content {
-  max-width: 1280px;
-  margin-top: 714px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3rem 2rem;
+/* Ensure user-dash-content occupies full width */
+.user-dash-content {
+  width: 100%; /* Set to occupy full width */
+  max-width: none; /* Remove any width restrictions */
+  margin-top: 1rem; /* Reduce excessive margin */
+  padding: 2rem;
   flex-grow: 1;
-  width: 100%;
 }
 
 /* Updated input-field styles */
-.input-field {
+.user-dash-input-field {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -198,7 +201,7 @@ body {
   justify-content: space-between;
 }
 
-.input-field input {
+.user-dash-input-field input {
   flex: 1 1 220px;
   padding: 1rem 1.5rem;
   border: 2px solid #e2e8f0;
@@ -209,14 +212,14 @@ body {
   min-width: 220px;
 }
 
-.input-field input:focus {
+.user-dash-input-field input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   transform: translateY(-1px);
 }
 
-.input-field .search {
+.user-dash-input-field .user-dash-search {
   flex: 1 1 220px;
   min-width: 220px;
   padding: 1rem 2rem;
@@ -230,7 +233,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.input-field .search:hover {
+.user-dash-input-field .user-dash-search:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
@@ -247,14 +250,14 @@ body {
   }
 }
 
-.context {
+.user-dash-context {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 4rem 0;
 }
 
-.context h3 {
+.user-dash-context h3 {
   color: var(--primary-color);
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -262,7 +265,7 @@ body {
   padding-bottom: 0.5rem;
 }
 
-.context h3::after {
+.user-dash-context h3::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -273,15 +276,15 @@ body {
   border-radius: 2px;
 }
 
-.context p {
+.user-dash-context p {
   color: var(--text-secondary);
   line-height: 1.7;
   font-size: 1.1rem;
 }
 
-.cont1,
-.cont2,
-.cont3 {
+.user-dash-cont1,
+.user-dash-cont2,
+.user-dash-cont3 {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 2.5rem;
   border-radius: 1.5rem;
@@ -291,15 +294,15 @@ body {
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.cont1:hover,
-.cont2:hover,
-.cont3:hover {
+.user-dash-cont1:hover,
+.user-dash-cont2:hover,
+.user-dash-cont3:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-.drive {
+.user-dash-drive {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
   padding: 4rem 3rem;
   border-radius: 2rem;
@@ -310,14 +313,14 @@ body {
   border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.drive h2 {
+.user-dash-drive h2 {
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-weight: 800;
 }
 
-.drive p {
+.user-dash-drive p {
   color: var(--text-secondary);
   max-width: 800px;
   margin: 0 auto 2.5rem;
@@ -325,7 +328,7 @@ body {
   font-size: 1.1rem;
 }
 
-.offerride {
+.user-dash-offerride {
   padding: 1rem 3.5rem;
   background: var(--gradient);
   color: white;
@@ -338,85 +341,85 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.offerride:hover {
+.user-dash-offerride:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav {
+  .user-dash-nav {
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
   }
 
-  .wrapper1,
-  .wrapper2 {
+  .user-dash-wrapper1,
+  .user-dash-wrapper2 {
     width: 100%;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .feature-item,
-  .help,
-  .profile,
-  .switch-driver {
+  .user-dash-feature-item,
+  .user-dash-help,
+  .user-dash-profile,
+  .user-dash-switch-driver {
     width: 100%;
     text-align: center;
   }
 
-  .heading h1 {
+  .user-dash-heading h1 {
     font-size: 2.5rem;
   }
 
-  .hero-section {
+  .user-dash-hero-section {
     padding: 4rem 1rem;
   }
 
-  .content {
+  .user-dash-content {
     gap: 10px;
     padding: 2rem 1rem;
   }
 
-  .input-field {
+  .user-dash-input-field {
     flex-direction: column;
     padding: 1.5rem;
   }
 
-  .input-field input,
-  .input-field .search {
+  .user-dash-input-field input,
+  .user-dash-input-field .user-dash-search {
     width: 100%;
   }
 
-  .drive {
+  .user-dash-drive {
     padding: 2rem 1.5rem;
   }
 
-  .drive h2 {
+  .user-dash-drive h2 {
     font-size: 1.75rem;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .wrapper1,
-  .wrapper2 {
+  .user-dash-wrapper1,
+  .user-dash-wrapper2 {
     gap: 1rem;
   }
 
-  .nav {
+  .user-dash-nav {
     padding: 1rem;
   }
 
-  .heading h1 {
+  .user-dash-heading h1 {
     font-size: 3rem;
   }
 
-  .hero-section {
+  .user-dash-hero-section {
     padding: 5rem 2rem;
   }
 
-  .input-field {
+  .user-dash-input-field {
     gap: 0.75rem;
   }
 }

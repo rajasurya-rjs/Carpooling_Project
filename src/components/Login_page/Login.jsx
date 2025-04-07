@@ -42,17 +42,17 @@ function Login() {
   return (
     <div className="whole">
       <div className="login-box">
-        <h2 className="login-text">Login in with</h2>
-        <div className="other-login">
-          <div className="google-box" onClick={handleGoogleSignIn}>
-            <img className="google-img" src="/google.svg" alt="Google" />
+        <h2 className="login-h2">Login in with</h2>
+        <div className="login-other-login">
+          <div className="login-google-box" onClick={handleGoogleSignIn}>
+            <img className="login-google-img" src="/google.svg" alt="Google" />
           </div>
         </div>
-        <div className="or-text">
-          <h2 className="or_text1">OR</h2>
+        <div className="login-or-text">
+          <h2 className="login-or-text">OR</h2>
         </div>
-        <div className="form-box">
-          <div className="email-input">
+        <div className="login-form-box">
+          <div className="login-email-input">
             <input
               type="email"
               placeholder="Email address"
@@ -63,7 +63,7 @@ function Login() {
               }}
             />
           </div>
-          <div className="pass-input">
+          <div className="login-pass-input">
             <input
               type="password"
               placeholder="Password"
@@ -75,20 +75,23 @@ function Login() {
             />
           </div>
           {errorMsg && (
-            <div className="error-message" style={{ color: "red", fontSize: "0.875rem", marginTop: "8px", textAlign: "left" }}>
+            <div
+              className="error-message"
+              style={{ color: "red", fontSize: "0.875rem", marginTop: "8px", textAlign: "left" }}
+            >
               {errorMsg}
             </div>
           )}
         </div>
-        <div className="forget-pass">
+        <div className="login-forget-pass">
           <Link to="/login/forgot-password">Forget password?</Link>
         </div>
-        <div className="login-button">
-          <button className="login-btn" onClick={handleEmailPasswordSignIn}>
+        <div className="login-login-button">
+          <button className="login-login-btn" onClick={handleEmailPasswordSignIn}>
             Login
           </button>
         </div>
-        <div className="sign-up">
+        <div className="login-sign-up">
           <p>Dont have account?</p>
           <Link to="/login/sign-up">Sign up</Link>
         </div>

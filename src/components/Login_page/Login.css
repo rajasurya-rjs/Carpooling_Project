@@ -12,7 +12,7 @@ body {
   align-items: center;
   height: 100vh;
 }
-.nav{
+.login-nav{
   width: 100vw;
 }
 
@@ -30,21 +30,21 @@ body {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-h2 {
+.login-h2 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 20px;
 }
 
-.other-login {
+.login-other-login {
   display: flex;
   gap: 16px;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.google-box{
+.login-google-box{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@ h2 {
   background: white;
   cursor: pointer;
 }
-.apple-box {
+.login-apple-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,25 +67,25 @@ h2 {
   cursor: pointer;
 }
 
-.google-box:hover
+.login-google-box:hover
 {
   background:#F5F5F5;
   transform: translateY(1px);
 }
-.apple-box:hover {
+.login-apple-box:hover {
   background:#F5F5F5;
   transform: translateY(1px);
 }
 
-.google-img{
+.login-google-img{
   width: 24px;
   height: 24px;
 }
-.apple-img {
+.login-apple-img {
   width: 24px;
   height: 24px;
 }
-.or-text { 
+.login-or-text { 
   position: relative;
   top: 10px;
   margin: 20px;
@@ -94,7 +94,7 @@ h2 {
   justify-content: center;
 }
 
-.or-text h2 {
+.login-or-text h2 {
   font-size: 0.9rem;
   color: #6b7280;
   background: white;
@@ -104,15 +104,15 @@ h2 {
 }
 
 /* Input Fields */
-.form-box {
+.login-form-box {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 16px;
 }
 
-.email-input input,
-.pass-input input {
+.login-email-input input,
+.login-pass-input input {
   width: 100%;
   padding: 12px 16px;
   border: 1px solid #d1d5db;
@@ -121,35 +121,35 @@ h2 {
   outline: none;
 }
 
-.email-input input:focus,
-.pass-input input:focus {
+.login-email-input input:focus,
+.login-pass-input input:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
 }
 
 /* Forgot Password */
-.forget-pass {
+.login-forget-pass {
   text-align: right;
   margin-bottom: 16px;
 }
 
-.forget-pass a {
+.login-forget-pass a {
   font-size: 0.875rem;
   color: #2563eb;
   text-decoration: none;
   font-weight: 500;
 }
 
-.forget-pass a:hover {
+.login-forget-pass a:hover {
   text-decoration: underline;
 }
 
 /* Login Button */
-.login-button {
+.login-login-button {
   margin-top: 16px;
 }
 
-.login-btn {
+.login-login-btn {
   width: 100%;
   background: #2563eb;
   color: white;
@@ -161,19 +161,19 @@ h2 {
   cursor: pointer;
 }
 
-.login-btn:hover {
+.login-login-btn:hover {
   background: #1e40af;
   transform: scale(1.02);
 }
 
-.login-btn a {
+.login-login-btn a {
   text-decoration: none;
   color: white;
   display: block;
 }
 
 /* Sign Up */
-.sign-up {
+.login-sign-up {
   margin-top: 20px;
   font-size: 0.875rem;
   display: flex;
@@ -183,12 +183,12 @@ h2 {
   color: #6b7280;
 }
 
-.sign-up a {
+.login-sign-up a {
   color: #2563eb;
   text-decoration: none;
   font-weight: 500;
 }
 
-.sign-up a:hover {
+.login-sign-up a:hover {
   text-decoration: underline;
 }

@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Driver.css";
 import { Link } from "react-router-dom";
 import UpcomingRideList from "./UpcomingRideList";
 
 function Driver() {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   return (
-    <div className="main">
-      <div className="nav">
+    <div className="driver-main-container">
+      <div className="driver-nav-container">
         <div className="wrapper1">
-          <div className="logo">Logo</div>
-          <div className="feature-item">Home</div>
-          <div className="feature-item">My Rides</div>
-          <div className="feature-item">Calendar</div>
-          <div className="feature-item">Notifications</div>
+          <div className="driver-nav-title">Logo</div>
+          <div className="driver-nav-buttons">Home</div>
+          <div className="driver-nav-buttons">My Rides</div>
+          <div className="driver-nav-buttons">Calendar</div>
+          <div className="driver-nav-buttons">Notifications</div>
         </div>
 
         <div className="wrapper2">
@@ -21,13 +25,13 @@ function Driver() {
             to="/user-dashboard"
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            <div className="switch-user">Switch to User</div>
+            <div className="driver-switch-user">Switch to User</div>
           </Link>
           <div className="profile">Profile</div>
         </div>
       </div>
 
-      <div className="content">
+      <div className="driver-content">
         <div className="heading">
           <h1>Welcome Back, Driver! Manage your rides with ease.</h1>
         </div>
@@ -36,7 +40,7 @@ function Driver() {
             to="/crete-ride"
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            <button className="publish-btn" >🚗 Publish a Ride</button>
+            <button className="driver-publish-btn" >🚗 Publish a Ride</button>
           </Link>
         </div>
         <UpcomingRideList />

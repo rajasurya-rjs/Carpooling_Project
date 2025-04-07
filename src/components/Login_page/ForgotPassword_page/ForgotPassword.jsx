@@ -17,23 +17,23 @@ function ForgotPassword() {
 
   return (
     <div className='whole'>
-      <div className='forgot-box'>
-        <h2 className='forgot-text'>Forgot Your Password?</h2>
-        <p className='forgot-desc'>Enter your email address and we'll send you a link to reset your password.</p>
-        <div className='form-box'>
-          <div className='email-input'>
+      <div className="forgot-password-box">
+        <h2 className="forgot-password-text">Forgot Your Password?</h2>
+        <p className="forgot-password-desc">Enter your email address and we'll send you a link to reset your password.</p>
+        <div className="forgot-password-form-box">
+          <div className="forgot-password-email-input">
             <input
-              type='email'
-              placeholder='Email address'
+              type="email"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </div>
-        <div className='send-button'>
-          <button className='send-btn' onClick={handleResetPassword}>Send Reset Link</button>
+        <div className="forgot-password-send-button">
+          <button className="forgot-password-send-btn" onClick={handleResetPassword}>Send Reset Link</button>
         </div>
-        <div className='back-to-login'>
+        <div className="forgot-password-back-to-login">
           <Link to="/">Back to Login</Link>
         </div>
       </div>

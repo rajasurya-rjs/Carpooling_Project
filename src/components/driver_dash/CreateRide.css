@@ -1,5 +1,5 @@
 /* Base Layout */
-.page-wrapper {
+.create-ride-page-wrapper {
     min-height: 100vh;
     background: linear-gradient(120deg, #f0f4ff 0%, #e6eeff 100%);
     padding: 40px 20px;
@@ -7,7 +7,7 @@
   }
 
   /* Header Styles */
-  .main-heading {
+  .create-ride-main-heading {
     text-align: center;
     font-size: 3.5rem;
     color: #2d3748;
@@ -15,7 +15,7 @@
     animation: slideDown 0.8s ease-out;
   }
 
-  .heading-p {
+  .create-ride-heading-p {
     text-align: center;
     font-size: 1.25rem;
     color: #4a5568;
@@ -24,7 +24,7 @@
   }
 
   /* Content Layout */
-  .content-container {
+  .create-ride-content-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -34,7 +34,7 @@
   }
 
   /* Form Container */
-  .form-container {
+  .create-ride-form-container {
     background: white;
     padding: 2.5rem;
     border-radius: 20px;
@@ -42,18 +42,18 @@
     transition: transform 0.3s ease;
   }
 
-  .form-container:hover {
+  .create-ride-form-container:hover {
     transform: translateY(-5px);
   }
 
-  .form-container h2 {
+  .create-ride-form-container h2 {
     color: #2d3748;
     font-size: 1.8rem;
     margin-bottom: 2rem;
     position: relative;
   }
 
-  .form-container h2::after {
+  .create-ride-form-container h2::after {
     content: '';
     position: absolute;
     left: 0;
@@ -65,25 +65,25 @@
   }
 
   /* Form Styles */
-  .ride-form {
+  .create-ride-ride-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .form-group {
+  .create-ride-form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .form-group label {
+  .create-ride-form-group label {
     font-size: 0.95rem;
     font-weight: 500;
     color: #4a5568;
   }
 
-  .form-group input {
+  .create-ride-form-group input {
     padding: 0.75rem 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 10px;
@@ -91,18 +91,18 @@
     transition: all 0.3s ease;
   }
 
-  .form-group input:focus {
+  .create-ride-form-group input:focus {
     outline: none;
     border-color: #4c6ef5;
     box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.1);
   }
 
-  .form-group input::placeholder {
+  .create-ride-form-group input::placeholder {
     color: #a0aec0;
   }
 
   /* Submit Button */
-  .submit-button {
+  .create-ride-submit-button {
     margin-top: 1rem;
     padding: 1rem;
     background: #4c6ef5;
@@ -115,18 +115,18 @@
     transition: all 0.3s ease;
   }
 
-  .submit-button:hover {
+  .create-ride-submit-button:hover {
     background: #3b5bdb;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(76, 110, 245, 0.2);
   }
 
-  .submit-button:active {
+  .create-ride-submit-button:active {
     transform: translateY(0);
   }
 
   /* Extra Content Section */
-  .extra-content {
+  .create-ride-extra-content {
     background: white;
     padding: 2.5rem;
     border-radius: 20px;
@@ -134,14 +134,14 @@
     align-self: start;
   }
 
-  .extra-content h2 {
+  .create-ride-extra-content h2 {
     color: #2d3748;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     position: relative;
   }
 
-  .extra-content h2::after {
+  .create-ride-extra-content h2::after {
     content: '';
     position: absolute;
     left: 0;
@@ -152,7 +152,7 @@
     border-radius: 2px;
   }
 
-  .extra-content p {
+  .create-ride-extra-content p {
     color: #4a5568;
     line-height: 1.6;
     font-size: 1.1rem;
@@ -181,27 +181,27 @@
 
   /* Responsive Design */
   @media (max-width: 1024px) {
-    .content-container {
+    .create-ride-content-container {
       grid-template-columns: 1fr;
       max-width: 700px;
     }
 
-    .extra-content {
+    .create-ride-extra-content {
       margin-top: 0;
     }
   }
 
   @media (max-width: 640px) {
-    .page-wrapper {
+    .create-ride-page-wrapper {
       padding: 20px 15px;
     }
 
-    .main-heading {
+    .create-ride-main-heading {
       font-size: 2.5rem;
     }
 
-    .form-container,
-    .extra-content {
+    .create-ride-form-container,
+    .create-ride-extra-content {
       padding: 1.5rem;
     }
   }
@@ -229,6 +229,6 @@
   }
 
   /* Hover Effects */
-  .form-group input:hover {
+  .create-ride-form-group input:hover {
     border-color: #cbd5e0;
   }
