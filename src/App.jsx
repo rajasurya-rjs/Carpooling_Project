@@ -7,7 +7,7 @@ import SignedIn from "./components/SignedIn/SignedIn";
 import User from "./components/User_dasboard/User_dash"
 import CreateRide from "./components/driver_dash/CreateRide"
 import Driver from "./components/driver_dash/Driver";
-import Show_rides from "./components/show_rides/Show_rides";
+import Show_rides from "./components/Show_rides/Show_rides";
 function App() {
 	return (
 		<BrowserRouter>
