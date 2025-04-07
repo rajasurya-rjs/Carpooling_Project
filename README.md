@@ -9,7 +9,7 @@ This project is a carpooling application designed to connect users who want to s
 Before running the application, ensure you have the following installed:
 - [Go](https://golang.org/) (version 1.20 or higher)
 - [Git](https://git-scm.com/)
-- A PostgreSQL database
+- Need to have Postgres installed
 
 ---
 
