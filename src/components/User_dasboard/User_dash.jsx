@@ -99,7 +99,7 @@ function User() {
             eco-friendly! If you're driving with an empty car, consider publishing a carpool ride to
             save costs and travel with some company.
           </p>
-          <button className="offerride">Offer Ride</button>
+          <button className="offerride" onClick={() => navigate('/crete-ride')}>Offer Ride</button>
         </div>
       </div>
     </div>
