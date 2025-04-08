@@ -33,7 +33,10 @@ function Driver() {
       >
         <div className="driver-nav-container">
           <div className="wrapper1">
-            <div className="driver-nav-title">Logo</div>
+            <Link to="/user-dashboard">
+                      <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
+            
+                      </Link>
             <div className="driver-nav-buttons">Home</div>
             <div className="driver-nav-buttons">My Rides</div>
             <div className="driver-nav-buttons">Calendar</div>
