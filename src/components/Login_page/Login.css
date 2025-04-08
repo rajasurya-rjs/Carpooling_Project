@@ -41,7 +41,8 @@ body {
   display: flex;
   gap: 16px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: -22px;
+  margin-top: 31px;
 }
 
 .login-google-box{
@@ -191,4 +192,14 @@ body {
 
 .login-sign-up a:hover {
   text-decoration: underline;
+}
+
+/* Ensure the whole container occupies full height and centers the login box */
+.whole {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background: linear-gradient(to bottom right, #e3f2fd, #c5cae9); /* Add a gradient background */
+  margin: 0; /* Remove default margin */
 }

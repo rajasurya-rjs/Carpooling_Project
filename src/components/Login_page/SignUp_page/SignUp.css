@@ -1,0 +1,244 @@
+/* Base styles for SignUp Page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Match SignUp styles to Login styles */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #e3f2fd, #c5cae9);
+  margin: 0;
+}
+
+.signup-box {
+  background: white;
+  padding: 32px;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.signup-box:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.signup-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.signup-other-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.signup-google-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+}
+
+.signup-google-option:hover {
+  background: #f5f5f5;
+}
+
+.signup-google-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.signup-divider {
+  position: relative;
+  top: 10px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-divider-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+  background: white;
+  padding: 0 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.signup-email-field input,
+.signup-password-field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.signup-email-field input:focus,
+.signup-password-field input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.signup-submit-button {
+  margin-top: 16px;
+}
+
+.signup-submit-btn {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.signup-submit-btn:hover {
+  background: #1e40af;
+  transform: scale(1.02);
+}
+
+.signup-login-link {
+  margin-top: 20px;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  color: #6b7280;
+}
+
+.signup-login-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Base styles for SignUp Page */
+.signup-container-unique {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #e3f2fd, #c5cae9);
+  margin: 0;
+}
+
+.signup-box-unique {
+  background: white;
+  padding: 32px;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.signup-box-unique:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.signup-title-unique {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.signup-form-unique {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.signup-input-group-unique {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signup-label-unique {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: left;
+}
+
+.signup-input-unique {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.signup-input-unique:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+.signup-button-unique {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.signup-button-unique:hover {
+  background: #1e40af;
+  transform: scale(1.02);
+}
+
+.signup-footer-unique {
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.signup-link-unique {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link-unique:hover {
+  text-decoration: underline;
+}
