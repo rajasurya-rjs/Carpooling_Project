@@ -58,21 +58,23 @@ body {
   gap: 2rem;
 }
 
+
 .user-dash-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  color: transparent;
-  padding: 0.5rem 1rem;
+  height: 60px;
+  width: 80px;
+  object-fit: cover;  /* nicely fits the image */
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .user-dash-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.1); /* zoom effect on hover */
 }
+
+
+
+
 
 .user-dash-feature-item {
   padding: 0.75rem 1.25rem;

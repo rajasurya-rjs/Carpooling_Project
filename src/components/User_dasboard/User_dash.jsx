@@ -24,7 +24,11 @@ function User() {
     <div className="user-dash-main">
       <div className="user-dash-nav">
         <div className="user-dash-wrapper1">
-          <div className="user-dash-logo">Logo</div>
+          <Link to="/user-dashboard">
+          <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
+
+          </Link>
+
           <div className="user-dash-feature-item">Home</div>
           <div className="user-dash-feature-item">Messages</div>
           <div className="user-dash-feature-item">Calendar</div>
