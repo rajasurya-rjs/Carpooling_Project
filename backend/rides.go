@@ -92,7 +92,8 @@ func filterRides(c *gin.Context) {
 
 	if len(rides) == 0 {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "No rides found matching the criteria",
+				"rides": []Ride{}, // Include an empty rides array
+				"message": "No rides found matching the criteria",
 		})
 		return
 	}

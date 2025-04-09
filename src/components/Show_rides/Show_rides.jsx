@@ -7,10 +7,12 @@ function ShowRides() {
   const { from, to, date } = location.state || {};
   const [rides, setRides] = useState([]); // Initialize with an empty array
   const [error, setError] = useState(null); // Add error state
+  const [loading, setLoading] = useState(true); // Add a loading state to handle transitions
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true); // Set loading to true before fetching
         const response = await fetch(`http://localhost:8080/rides/filter?from=${from}&to=${to}&date=${date}`);
         if (!response.ok) {
           throw new Error("Failed to fetch rides");
@@ -20,20 +22,26 @@ function ShowRides() {
       } catch (error) {
         console.error("Error fetching rides:", error);
         setError("Unable to fetch rides. Please try again later.");
+      } finally {
+        setLoading(false); // Ensure loading is set to false after fetch
       }
     }
     if (from && to && date) {
       fetchData();
+    } else {
+      setLoading(false); // No data to fetch, stop loading
     }
   }, [from, to, date]);
 
   return (
     <div className="show-rides-main">
       <h2 className="show-rides-title">Available Rides</h2>
-      {error ? (
+      {loading ? (
+        <p className="loading-message">Loading rides...</p>
+      ) : error ? (
         <p>{error}</p>
       ) : rides.length === 0 ? (
-        <p>No rides found.</p>
+        <p className="no-rides-message">No rides available at the moment. Please check back later.</p>
       ) : (
         <div className="show-rides-content">
           {rides.map((ride, index) => (
