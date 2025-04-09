@@ -33,10 +33,13 @@ function Driver() {
       >
         <div className="driver-nav-container">
           <div className="wrapper1">
-            <Link to="/user-dashboard">
-                      <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-            
-                      </Link>
+            <img
+              className="user-dash-logo"
+              src="/logo.png"
+              alt="User Logo"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            />
+
             <div className="driver-nav-buttons">Home</div>
             <div className="driver-nav-buttons">My Rides</div>
             <div className="driver-nav-buttons">Calendar</div>
