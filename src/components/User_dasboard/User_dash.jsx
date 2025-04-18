@@ -20,6 +20,7 @@ function User() {
     navigate("/show_rides", { state: formData });
   }
   
+  
   return (
     <div className="user-dash-main">
       <div className="user-dash-nav">
@@ -54,7 +55,9 @@ function User() {
 
       <div className="user-dash-content">
         <div className="user-dash-heading">
-          <h1>Welcome Back! Travel to thousands of destinations at low prices</h1>
+          <h1>
+            Welcome Back! Travel to thousands of destinations at low prices
+          </h1>
         </div>
 
         <form className="user-dash-input-field" onSubmit={handleSubmit}>
@@ -89,29 +92,40 @@ function User() {
         <div className="user-dash-context">
           <div className="user-dash-cont1">
             <h3>Travel at low prices</h3>
-            <p>Wherever you’re going, there’s a carpool that will get you there for less.</p>
+            <p>
+              Wherever you’re going, there’s a carpool that will get you there
+              for less.
+            </p>
           </div>
           <div className="user-dash-cont2">
             <h3>Trustworthy and simple</h3>
             <p>
-              We check reviews, profiles and IDs, so you know who you’re travelling with; and our
-              app is both simple and secure thanks to powerful technology.
+              We check reviews, profiles and IDs, so you know who you’re
+              travelling with; and our app is both simple and secure thanks to
+              powerful technology.
             </p>
           </div>
           <div className="user-dash-cont3">
             <h3>Proximity makes it easier</h3>
-            <p>Wherever you’re going, there’s a carpool that will get you there for less.</p>
+            <p>
+              Wherever you’re going, there’s a carpool that will get you there
+              for less.
+            </p>
           </div>
         </div>
 
         <div className="user-dash-drive">
           <h2>Where do you want to drive to?</h2>
           <p>
-            Sharing a carpool is a great way to travel. It's affordable, comfortable and
-            eco-friendly! If you're driving with an empty car, consider publishing a carpool ride to
-            save costs and travel with some company.
+            Sharing a carpool is a great way to travel. It's affordable,
+            comfortable and eco-friendly! If you're driving with an empty car,
+            consider publishing a carpool ride to save costs and travel with
+            some company.
           </p>
-          <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            to="/driver_dash"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <button className="user-dash-offerride">Offer Ride</button>
           </Link>
         </div>
