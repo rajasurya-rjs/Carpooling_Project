@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-dash-nav {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.user-dash-wrapper1,
+.user-dash-wrapper2 {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Added styles for no-underline class to remove underline */
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ensure profile and home buttons have the same styling */
+.user-dash-feature-item {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.user-dash-feature-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure help button has the same styling as profile and home */
+.user-dash-help {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.user-dash-help:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure 'Switch to Driver' button has no underline and matches others */
+.user-switch-driver {
+    width: 100%;
+    text-align: center;
+  }
+.user-switch-driver {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.user-switch-driver:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-dash-nav {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .user-dash-wrapper1,
+  .user-dash-wrapper2 {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .user-dash-wrapper1,
+  .user-dash-wrapper2 {
+    gap: 1rem;
+  }
+
+  .user-dash-nav {
+    padding: 1rem;
+  }
+}
