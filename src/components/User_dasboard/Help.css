@@ -1,0 +1,291 @@
+/* Base styling and variables */
+:root {
+    --primary-color: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #f59e0b;
+    --bg-color: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  }
+  
+  /* Help page container */
+  .help-page-container {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Header styling */
+  .help-header {
+    text-align: center;
+    padding: 3rem 1rem 4rem;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
+      url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .help-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .help-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  
+  /* Main content area */
+  .help-main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+  
+  /* Section styling */
+  .help-contact-section,
+  .help-form-section {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .help-contact-section {
+    animation-delay: 0.1s;
+  }
+  
+  .help-form-section {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .help-contact-section:hover,
+  .help-form-section:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .help-section-title {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .help-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 2px;
+  }
+  
+  .help-text {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  
+  /* Contact list styling */
+  .help-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .help-contact-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .help-contact-item:last-child {
+    border-bottom: none;
+  }
+  
+  .help-contact-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .help-contact-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+  }
+  
+  /* Form styling */
+  .help-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .help-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .help-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .help-input,
+  .help-textarea {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    font-family: inherit;
+  }
+  
+  .help-input:focus,
+  .help-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    transform: translateY(-1px);
+  }
+  
+  .help-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .help-submit-button {
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    align-self: flex-start;
+  }
+  
+  .help-submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .help-submit-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .help-page-container {
+      padding: 1rem;
+    }
+    
+    .help-header {
+      padding: 2rem 1rem;
+    }
+    
+    .help-title {
+      font-size: 2.25rem;
+    }
+    
+    .help-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .help-main-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .help-contact-section,
+    .help-form-section {
+      padding: 1.5rem;
+    }
+    
+    .help-section-title {
+      font-size: 1.5rem;
+    }
+    
+    .help-submit-button {
+      width: 100%;
+      align-self: center;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .help-page-container {
+      padding: 1.5rem;
+    }
+    
+    .help-main-content {
+      gap: 1.5rem;
+    }
+    
+    .help-contact-section,
+    .help-form-section {
+      padding: 2rem;
+    }
+  }

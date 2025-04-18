@@ -23,7 +23,6 @@ function Driver() {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
   }, []);
-
   return (
     <div className="driver-page">
       <div
@@ -39,15 +38,25 @@ function Driver() {
               alt="User Logo"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
-
-            <div className="driver-nav-buttons">Home</div>
+            <Link
+              to="/driver_dash"
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              <div className="driver-nav-buttons">Home</div>
+            </Link>
             <div className="driver-nav-buttons">My Rides</div>
-            <div className="driver-nav-buttons">Calendar</div>
+            <Link to ="/notification"   style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <div className="driver-nav-buttons">Notifications</div>
+            </Link>
           </div>
 
           <div className="wrapper2">
+            <Link to ="/help" style ={{textDecoration:"none", color:"inherit"}}>
             <div className="help">Help</div>
+            </Link>
+         
             <Link
               to="/user-dashboard"
               style={{ textDecoration: "none", color: "inherit" }}
