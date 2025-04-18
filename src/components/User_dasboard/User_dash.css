@@ -37,45 +37,6 @@ body {
   padding: 0; /* Remove any default padding */
 }
 
-.user-dash-nav {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.user-dash-wrapper1,
-.user-dash-wrapper2 {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-
-.user-dash-logo {
-  height: 60px;
-  width: 80px;
-  object-fit: cover;  /* nicely fits the image */
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.user-dash-logo:hover {
-  transform: scale(1.1); /* zoom effect on hover */
-}
-
-
-
-
-
 .user-dash-feature-item {
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
@@ -350,19 +311,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .user-dash-nav {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .user-dash-wrapper1,
-  .user-dash-wrapper2 {
-    width: 100%;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
+  
   .user-dash-feature-item,
   .user-dash-help,
   .user-dash-profile,
@@ -404,14 +353,6 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .user-dash-wrapper1,
-  .user-dash-wrapper2 {
-    gap: 1rem;
-  }
-
-  .user-dash-nav {
-    padding: 1rem;
-  }
 
   .user-dash-heading h1 {
     font-size: 3rem;

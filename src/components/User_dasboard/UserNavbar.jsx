@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbarr.css";
+import "./UserNavbar.css";
 
-function Navbar() {
+function UserNavbar() {
   return (
     <div className="user-dash-nav">
       <div className="user-dash-wrapper1">
@@ -25,7 +25,12 @@ function Navbar() {
       </div>
 
       <div className="user-dash-wrapper2">
-        <div className="user-dash-help">Help</div>
+        <Link
+          to="/user-dashboard/help"
+          className="user-dash-help no-underline"
+        >
+          Help
+        </Link>
         <Link
           to="/driver_dash"
           style={{ textDecoration: "none", color: "inherit" }}
@@ -43,4 +48,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default UserNavbar;

@@ -25,6 +25,21 @@
   gap: 2rem;
 }
 
+.user-dash-logo {
+  height: 60px;
+  width: 80px;
+  object-fit: cover;  /* nicely fits the image */
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-dash-logo:hover {
+  transform: scale(1.1); /* zoom effect on hover */
+}
+
+
+
 /* Added styles for no-underline class to remove underline */
 .no-underline {
   text-decoration: none;

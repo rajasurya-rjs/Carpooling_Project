@@ -22,26 +22,6 @@ function User() {
 
   return (
     <div className="user-dash-main">
-      <div className="user-dash-nav">
-        <div className="user-dash-wrapper1">
-        <Link to="/user-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-  <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-</Link>
-
-          <div className="user-dash-feature-item">Home</div>
-          <div className="user-dash-feature-item">Messages</div>
-          <div className="user-dash-feature-item">Calendar</div>
-          <div className="user-dash-feature-item">Notifications</div>
-        </div>
-
-        <div className="user-dash-wrapper2">
-          <div className="user-dash-help">Help</div>
-          <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="user-dash-switch-driver">Switch to Driver</div>
-          </Link>
-          <div className="user-dash-profile">Profile</div>
-        </div>
-      </div>
 
       <div className="user-dash-content">
         <div className="user-dash-heading">
