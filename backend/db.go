@@ -12,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	// Load environment variables
+	
 	if err := godotenv.Load(".env"); err != nil {
 		log.Println("Warning: .env file not found, using system environment variables")
 	}
@@ -29,7 +29,7 @@ func InitDB() {
 
 	DB = db
 
-	if err := DB.AutoMigrate(&Ride{}); err != nil {
+	if err := DB.AutoMigrate(&Ride{}, &User{}); err != nil {
 		log.Fatalf("AutoMigrate failed: %v", err)
 	}
 }
