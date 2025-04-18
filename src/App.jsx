@@ -11,6 +11,8 @@ import Show_rides from "./components/Show_rides/Show_rides";
 import Message from "./components/Message/Message";
 import Notification from "./components/Notification/Notification";
 import Help from "./components/User_dasboard/Help";
+import UserProfile from "./components/User_dasboard/UserProfile";
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -26,6 +28,7 @@ function App() {
 				<Route path="/message" element={<Message />} />
 				<Route path="/notification" element={<Notification/>}/>
 				<Route path="/help" element={<Help/>}/>
+				<Route path="/UserProfile" element={<UserProfile/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

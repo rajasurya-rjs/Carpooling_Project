@@ -1,0 +1,87 @@
+/* UserProfile.css */
+
+.user-profile-container-unique {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fdfdfd;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .user-profile-title-unique {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .user-profile-form-unique {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .user-profile-input-unique,
+  .user-profile-select-unique,
+  .user-profile-textarea-unique {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background-color: #fff;
+  }
+  
+  .user-profile-input-unique:focus,
+  .user-profile-select-unique:focus,
+  .user-profile-textarea-unique:focus {
+    border-color: #007bff;
+  }
+  
+  .user-profile-select-unique {
+    appearance: none;
+    background-color: #fff;
+  }
+  
+  .user-profile-textarea-unique {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .user-profile-btn-unique {
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-profile-btn-unique:hover {
+    background-color: #0056b3;
+  }
+  
+  .user-profile-info-unique {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .user-profile-info-unique p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .user-profile-info-unique strong {
+    color: #222;
+  }
+  

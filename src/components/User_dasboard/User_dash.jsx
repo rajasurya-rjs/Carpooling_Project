@@ -46,7 +46,9 @@ function User() {
           <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
             <div className="user-dash-switch-driver">Switch to Driver</div>
           </Link>
+          <Link to ="/UserProfile" style={{ textDecoration: "none", color: "inherit" }}>
           <div className="user-dash-profile">Profile</div>
+          </Link>
         </div>
       </div>
 
