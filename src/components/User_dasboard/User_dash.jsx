@@ -19,7 +19,7 @@ function User() {
     setPassengerCount("");
     navigate("/show_rides", { state: formData });
   }
-
+  
   return (
     <div className="user-dash-main">
       <div className="user-dash-nav">
