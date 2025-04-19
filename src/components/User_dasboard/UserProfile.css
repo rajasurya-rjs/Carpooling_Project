@@ -1,5 +1,7 @@
 /* UserProfile.css */
-
+html{
+  scroll-behavior: smooth;
+}
 .user-profile-container-unique {
     max-width: 600px;
     margin: 2rem auto;

@@ -8,7 +8,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/user-profile");
+        const response = await fetch("http://localhost:8080/register");
         if (!response.ok) throw new Error("Failed to fetch user data");
         const data = await response.json();
         setUserData(data);
@@ -32,11 +32,10 @@ const UserProfile = () => {
       language: e.target.language.value,
       address: e.target.address.value,
       occupation: e.target.occupation.value,
-      bio: e.target.bio.value,
     };
 
     try {
-      const response = await fetch("http://localhost:8080/api/user-profile", {
+      const response = await fetch("http://localhost:8080/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -45,7 +44,9 @@ const UserProfile = () => {
       if (!response.ok) throw new Error("Failed to submit user profile");
 
       const result = await response.json();
-      console.log("Profile submitted successfully:", result);
+      console.log(result.message);
+      alert(result.message);
+      localStorage.setItem("UserId", data.UserId);
       setUserData(data);
       setIsEditing(false);
     } catch (error) {
@@ -74,7 +75,6 @@ const UserProfile = () => {
             <input name="language" type="text" placeholder="Language" defaultValue={userData?.language || ""} required className="user-profile-input-unique" />
             <input name="address" type="text" placeholder="Address" defaultValue={userData?.address || ""} className="user-profile-input-unique" />
             <input name="occupation" type="text" placeholder="Occupation" defaultValue={userData?.occupation || ""} className="user-profile-input-unique" />
-            <textarea name="bio" rows="3" placeholder="Short Bio" className="user-profile-textarea-unique">{userData?.bio || ""}</textarea>
             <button type="submit" className="user-profile-btn-unique">Submit</button>
           </form>
         </>
@@ -90,7 +90,6 @@ const UserProfile = () => {
             <p><strong>Language:</strong> {userData.language}</p>
             <p><strong>Address:</strong> {userData.address}</p>
             <p><strong>Occupation:</strong> {userData.occupation}</p>
-            <p><strong>Bio:</strong> {userData.bio}</p>
           </div>
           <button onClick={handleEdit} className="user-profile-btn-unique">Edit</button>
         </>
