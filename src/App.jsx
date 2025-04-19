@@ -12,6 +12,7 @@ import Message from "./components/Message/Message";
 import Notification from "./components/Notification/Notification";
 import Help from "./components/User_dasboard/Help";
 import UserProfile from "./components/User_dasboard/UserProfile";
+import DriverProfile from "./components/driver_dash/DriverProfile";
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 				<Route path="/notification" element={<Notification/>}/>
 				<Route path="/help" element={<Help/>}/>
 				<Route path="/UserProfile" element={<UserProfile/>}/>
+				<Route path="/DriverProfile" element={<DriverProfile/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

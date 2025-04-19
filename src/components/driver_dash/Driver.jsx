@@ -63,7 +63,9 @@ function Driver() {
             >
               <div className="driver-switch-user">Switch to User</div>
             </Link>
-            <div className="profile">Profile</div>
+            <Link to ="/DriverProfile" style={{ textDecoration: "none", color: "inherit" }}>
+                      <div className="profile">Profile</div>
+            </Link>
           </div>
         </div>
 
