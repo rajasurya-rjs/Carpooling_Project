@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 	"strconv"
-
-	"github.com/gin-gonic/gin"
+    "github.com/gin-gonic/gin"
+	"slices"
 )
 
 type User struct {
@@ -23,7 +23,7 @@ type User struct {
 }
 
 
-func registerUser(c* gin.Context){
+func registerUser(c* gin.Context){             //register
 	var newUser User
 	if err := c.BindJSON(&newUser); err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message" : "Error binding json"})
@@ -41,7 +41,7 @@ func registerUser(c* gin.Context){
 	})
 }
 
-func getUsers(c* gin.Context){       // for debugging purposes
+func getUsers(c* gin.Context){       // for debugging purposes      /users
 
 	var users []User
 	users, err := loadUsers()
@@ -60,7 +60,7 @@ func getUsers(c* gin.Context){       // for debugging purposes
      c.IndentedJSON(http.StatusAccepted, &users)
 }
 
-func getUserByID(c *gin.Context) {
+func getUserByID(c *gin.Context) {           //getUser?id={userID}
 	idParam := c.Query("id")
 	if idParam == "" {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing 'id' query parameter"})
@@ -83,6 +83,52 @@ func getUserByID(c *gin.Context) {
 }
 
 
+// Adding rider to a ride 
+
+func addRiderToRide(c *gin.Context) {    //addrider?rideId={ride id}&riderId={rider id}
+	
+	rideIDParam := c.Query("rideId")
+	riderIDParam := c.Query("riderId")
 
 
+	if rideIDParam == "" || riderIDParam == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing rideId or riderId query parameter"})
+		return
+	}
 
+	rideID, err1 := strconv.ParseUint(rideIDParam, 10, 64)
+	riderID, err2 := strconv.ParseInt(riderIDParam, 10, 64)
+
+	if err1 != nil || err2 != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid rideId or riderId format"})
+		return
+	}
+
+	var ride Ride
+
+	
+	if err := DB.First(&ride, rideID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Ride not found"})
+		return
+	}
+
+	
+	if slices.Contains(ride.RiderIDs, riderID) {
+			c.JSON(http.StatusConflict, gin.H{"message": "Rider already added to this ride"})
+			return
+		}
+
+	
+	ride.RiderIDs = append(ride.RiderIDs, riderID)
+
+	
+	if err := DB.Save(&ride).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to update ride with new rider"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Rider successfully added to ride",
+		"ride":    ride,
+	})
+}
