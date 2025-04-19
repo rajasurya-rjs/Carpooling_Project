@@ -11,7 +11,7 @@ function UpcomingRideList() {
     const fetchRides = async () => {
       try {
         const userId = parseInt(localStorage.getItem("UserId"), 10);
-        if (!response.ok) console.error("User ID not found in local storage");
+        if (!userId) console.error("User ID not found in local storage");
 
         const response = await fetch(
           `http://localhost:8080/driver/rides?id=${userId}`
@@ -19,6 +19,7 @@ function UpcomingRideList() {
         if (!response.ok) console.error("Failed to fetch rides");
 
         const data = await response.json();
+        console.log(data)
         setRides(data);
       } catch (err) {
         console.error("Error fetching rides:", err);
@@ -33,10 +34,11 @@ function UpcomingRideList() {
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, []);
 
-  const sortedRides = useMemo(
-    () => rides.sort((a, b) => new Date(a.date) - new Date(b.date)),
-    [rides]
-  );
+  const sortedRides = useMemo(() => {
+    console.log(rides.length)
+    if(!rides.length) return []
+    return [...rides].sort((a, b) => new Date(a.date) - new Date(b.date));
+  }, [rides]);
 
   if (loading) {
     return <div className="loading-message">Loading upcoming rides...</div>;
