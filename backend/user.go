@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"time"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -57,6 +58,28 @@ func getUsers(c* gin.Context){       // for debugging purposes
 	}
 
      c.IndentedJSON(http.StatusAccepted, &users)
+}
+
+func getUserByID(c *gin.Context) {
+	idParam := c.Query("id")
+	if idParam == "" {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing 'id' query parameter"})
+		return
+	}
+
+	userID, err := strconv.ParseUint(idParam, 10, 64)
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Invalid 'id' format"})
+		return
+	}
+
+	var user User
+	if err := DB.First(&user, userID).Error; err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "User not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, user)
 }
 
 

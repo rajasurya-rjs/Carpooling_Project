@@ -17,5 +17,6 @@ func main() {
 	r.POST("/register", registerUser)
 	r.GET("/users", getUsers)
 	r.GET("/driver/rides", getDriverRides)
+	r.GET("/getUser", getUserByID)
 	r.Run("localhost:8080")
 }

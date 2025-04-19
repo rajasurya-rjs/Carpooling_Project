@@ -8,7 +8,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userId = parseInt(localStorage.getItem("UserId"));
+        const userId = parseInt(localStorage.getItem('UserId'))
         const response = await fetch(`http://localhost:8080/getUser?id=${userId}`);
         if (!response.ok) throw new Error("Failed to fetch user data");
         const data = await response.json();
@@ -29,6 +29,7 @@ const UserProfile = () => {
       email: e.target.email.value,
       phone: e.target.phone.value,
       age: parseInt(e.target.age.value),
+      age: parseInt(e.target.age.value),
       gender: e.target.gender.value,
       language: e.target.language.value,
       address: e.target.address.value,
@@ -45,9 +46,9 @@ const UserProfile = () => {
       if (!response.ok) throw new Error("Failed to submit user profile");
 
       const result = await response.json();
-      console.log(result.message);
+      console.log(result);
       alert(result.message);
-      localStorage.setItem("UserId", result.data?.UserId || "");
+      localStorage.setItem("UserId", result.UserId);
       setUserData(data);
       setIsEditing(false);
     } catch (error) {
