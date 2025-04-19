@@ -109,7 +109,7 @@ func filterRides(c *gin.Context) {
 //Driver Rides
 
 func getDriverRides(c *gin.Context) {
-	driverIDparam := c.Query("driverId")
+	driverIDparam := c.Query("id")
 
 	if driverIDparam == "" {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Missing driverID query parameter"})
