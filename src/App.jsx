@@ -13,7 +13,7 @@ import Notification from "./components/Notification/Notification";
 import Help from "./components/User_dasboard/Help";
 import UserProfile from "./components/User_dasboard/UserProfile";
 import DriverProfile from "./components/driver_dash/DriverProfile";
-
+import Show_rides_card from "./components/Show_rides/Show_rides_card";
 function App() {
 	return (
 		<BrowserRouter>
@@ -31,6 +31,7 @@ function App() {
 				<Route path="/help" element={<Help/>}/>
 				<Route path="/UserProfile" element={<UserProfile/>}/>
 				<Route path="/DriverProfile" element={<DriverProfile/>}/>
+				<Route path="/showridescard" element={<Show_rides_card/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

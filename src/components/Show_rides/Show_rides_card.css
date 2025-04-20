@@ -1,0 +1,117 @@
+.ride-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+    background: #f0f2f5;
+  }
+  
+  .ride-card-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .ride-info {
+    margin-top: 1rem;
+  }
+  
+  .info-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  }
+  
+  .icon {
+    color: #4a90e2;
+  }
+  
+  .driver-details {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .driver-details h3 {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .driver-details p {
+    margin: 0.5rem 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .driver-details .icon {
+    margin-right: 10px;
+    color: #007bff;
+  }
+  
+  .driver-details .contact-btn {
+    padding: 0.6rem 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .driver-details .contact-btn:hover {
+    background-color: #218838;
+  }
+  
+  .driver-details .contact-btn .icon {
+    margin-right: 10px;
+  }
+  
+  .go-back-btn {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 16px;
+  }
+  
+  .go-back-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .no-data {
+    padding: 2rem;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .no-data button {
+    padding: 0.6rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 16px;
+  }
+  
+  .no-data button:hover {
+    background-color: #0056b3;
+  }
+  

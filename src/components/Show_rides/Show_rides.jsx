@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { MapPin, Calendar } from 'lucide-react';
 import "./Show_rides.css";
 
 function ShowRides() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { from, to, date } = location.state || {};
   const [rides, setRides] = useState([]);
   const [error, setError] = useState(null);
@@ -20,6 +21,7 @@ function ShowRides() {
         }
         const data = await response.json();
         if (Array.isArray(data)) {
+          console.log(rides);
           setRides(data);
         } else {
           setRides([]);
@@ -45,19 +47,19 @@ function ShowRides() {
           <Link to="/user-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
           </Link>
-          <Link to="/user-dashboard" style={{textDecoration:"none"}} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Link to="/user-dashboard" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <div className="user-dash-feature-item">Home</div>
           </Link>
-          <Link to="/message" style={{textDecoration:"none"}} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Link to="/message" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <div className="user-dash-feature-item">Messages</div>
           </Link>
-          <Link to="/notification" style={{textDecoration:"none"}} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Link to="/notification" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <div className="user-dash-feature-item">Notifications</div>
           </Link>
         </div>
 
         <div className="user-dash-wrapper2">
-          <Link to="/help" style={{textDecoration:"none"}} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Link to="/help" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <div className="user-dash-help">Help</div>
           </Link>
           <div className="user-dash-profile">Profile</div>
@@ -85,7 +87,12 @@ function ShowRides() {
           ) : (
             <div className="show-rides-content">
               {rides.map((ride, index) => (
-                <div key={index} className="show-rides-card">
+                <div
+                  key={index}
+                  className="show-rides-card"
+                  onClick={() => navigate("/showridescard", { state: { ride } })}
+                  style={{ cursor: "pointer" }}
+                >
                   <div className="card-header">
                     <h3>Ride Details</h3>
                   </div>
@@ -98,11 +105,11 @@ function ShowRides() {
                           <p className="location-value">{ride.from}</p>
                         </div>
                       </div>
-                      
+
                       <div className="route-connector">
                         <div className="route-line"></div>
                       </div>
-                      
+
                       <div className="location-point">
                         <MapPin className="location-icon to-icon" />
                         <div className="location-details">
@@ -111,13 +118,18 @@ function ShowRides() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="time-container">
                       <Calendar className="time-icon" />
                       <div className="time-details">
                         <span className="time-label">Date & Time</span>
                         <p className="time-value">{ride.time}</p>
                       </div>
+                    </div>
+
+                    <div className="price-container">
+                      <span className="price-label">Price</span>
+                      <p className="price-value">₹{ride.price}</p>
                     </div>
                   </div>
                 </div>
