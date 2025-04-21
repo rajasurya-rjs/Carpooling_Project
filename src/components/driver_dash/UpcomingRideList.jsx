@@ -67,12 +67,12 @@ function UpcomingRideList() {
                     <div className="upcoming-ride-date">
                       <Calendar size={16} />
                       <span>
-                        {new Date(ride.date).toLocaleDateString("en-GB")}
+                        {new Date(ride.time).toLocaleDateString("en-GB")}
                       </span>
                     </div>
                     <div className="upcoming-ride-seats">
                       <User size={16} />
-                      <span>{ride.seats} seats booked</span>
+                      <span>{ride.seats} Seats Available</span>
                     </div>
                   </div>
                 </div>

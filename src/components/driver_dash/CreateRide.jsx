@@ -8,6 +8,8 @@ function CreateRide({ onClose }) {
     time: "",
     seats: 0,
     price: 0,
+    driver_id: parseInt(localStorage.getItem("UserId"), 10),
+    rider_ids: [],
   });
 
   const handleChange = (e) => {
