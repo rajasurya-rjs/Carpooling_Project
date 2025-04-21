@@ -14,6 +14,8 @@ import Help from "./components/User_dasboard/Help";
 import UserProfile from "./components/User_dasboard/UserProfile";
 import DriverProfile from "./components/driver_dash/DriverProfile";
 import Show_rides_card from "./components/Show_rides/Show_rides_card";
+import UserdashMyrides from "./components/User_dasboard/UserdashMyrides/UserdashMyrides";
+import Usermyridescard from "./components/User_dasboard/UserdashMyrides/usermyridescard";
 function App() {
 	return (
 		<BrowserRouter>
@@ -32,6 +34,8 @@ function App() {
 				<Route path="/UserProfile" element={<UserProfile/>}/>
 				<Route path="/DriverProfile" element={<DriverProfile/>}/>
 				<Route path="/showridescard" element={<Show_rides_card/>}/>
+				<Route path="/userdashmyrides" element={<UserdashMyrides/>}/>
+				<Route path="/userdashcard" element={<Usermyridescard/>}/>
 			</Routes>
 		</BrowserRouter>
 	);

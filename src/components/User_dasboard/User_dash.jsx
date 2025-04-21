@@ -37,13 +37,17 @@ function User() {
           >
             <div className="user-dash-feature-item">Home</div>
           </Link>
+          
+          {/* 👇 New link placeholder, replace '/new-route' with actual route */}
           <Link
-            to="/message"
+            to="/userdashmyrides"
             style={{ textDecoration: "none" }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="user-dash-feature-item">Messages</div>
+            <div className="user-dash-feature-item">My Rides</div>
           </Link>
+
+
           <Link
             to="/notification"
             style={{ textDecoration: "none" }}

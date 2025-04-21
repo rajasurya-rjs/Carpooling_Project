@@ -1,0 +1,221 @@
+/* UserdashMyrides.css */
+
+.myrides-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .myrides-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 2rem;
+    font-weight: 700;
+  }
+  
+  .myrides-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 2rem;
+    width: 100%;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .myrides-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    position: relative;
+  }
+  
+  .myrides-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .myrides-card-header {
+    background: var(--gradient);
+    color: white;
+    padding: 1rem 1.5rem;
+  }
+  
+  .myrides-card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .myrides-card-content {
+    padding: 1.5rem;
+  }
+  
+  .myrides-location-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .myrides-location-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .myrides-location-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .from-icon {
+    color: var(--primary-color);
+  }
+  
+  .to-icon {
+    color: var(--secondary-color);
+  }
+  
+  .myrides-location-details {
+    flex: 1;
+  }
+  
+  .myrides-location-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .myrides-location-value {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .myrides-route-connector {
+    padding-left: 0.75rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .myrides-route-line {
+    width: 2px;
+    height: 100%;
+    background: var(--primary-light);
+    margin-left: 0.75rem;
+  }
+  
+  .myrides-time-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+  }
+  
+  .myrides-time-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-dark);
+  }
+  
+  .myrides-time-details {
+    flex: 1;
+  }
+  
+  .myrides-time-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .myrides-time-value {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .myrides-price-container {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: green;
+  }
+  
+  .myrides-price-label {
+    display: none;
+  }
+  
+  .myrides-price-value {
+    font-size: 1.2em;
+    color: green;
+  }
+  
+  .myrides-loading,
+  .myrides-error,
+  .myrides-empty {
+    margin: 2rem;
+    text-align: center;
+  }
+  
+  .myrides-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #ccc;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .myrides-content {
+      grid-template-columns: 1fr;
+      padding: 0 1rem 1rem;
+    }
+  
+    .myrides-title {
+      margin: 1rem;
+      font-size: 1.75rem;
+    }
+  
+    .myrides-card-content {
+      padding: 1rem;
+    }
+  
+    .myrides-location-value,
+    .myrides-time-value {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .myrides-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

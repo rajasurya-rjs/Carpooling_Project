@@ -6,26 +6,27 @@ import "./Show_rides_card.css";
 function Show_rides_card() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { ride } = location.state || {}; // Receiving ride data from the previous page
+  const { ride } = location.state || {};
 
   const [driver, setDriver] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetching the driver details using the driver_id from the ride data
+  const userId = localStorage.getItem("UserId");
+
   useEffect(() => {
+    if (!userId) {
+      alert("Please complete your user profile first.");
+      navigate("/UserProfile");
+      return;
+    }
+
     async function fetchDriverDetails() {
- 
-
       try {
-        // First, fetch the ride details (which you already have) - we use it for the ride display
         const response = await fetch(`http://localhost:8080/getUser?id=${ride.driver_id}`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch driver details");
-        }
-
+        if (!response.ok) throw new Error("Failed to fetch driver details");
         const data = await response.json();
-        setDriver(data); // Set the driver details
+        setDriver(data);
       } catch (err) {
         console.error("Error fetching driver data:", err);
         setError("Unable to fetch driver details. Please try again later.");
@@ -34,15 +35,33 @@ function Show_rides_card() {
       }
     }
 
-    // If ride data and driver_id exist, fetch driver details
     if (ride?.driver_id) {
       fetchDriverDetails();
     } else {
       setLoading(false);
     }
-  }, [ride]);
+  }, [ride, userId, navigate]);
 
-  // If ride data is missing
+  const handleBookRide = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/addRider?rideId=${ride.id}&riderId=${userId}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Booking failed.");
+      }
+
+      alert("Ride booked successfully!");
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert("Failed to book ride. Please try again.");
+    }
+  };
+
   if (!ride) {
     return (
       <div className="no-data">
@@ -57,25 +76,14 @@ function Show_rides_card() {
       <div className="ride-card-container">
         <h2>Ride Details</h2>
 
-        {/* Ride details section */}
         <div className="ride-info">
-          <div className="info-block"><strong>Date:</strong> {ride.time}</div>
-          <div className="info-block"><strong>Time:</strong> {ride.time}</div>
+          <div className="info-block"><Calendar className="icon" /><strong>Date:</strong> {ride.time}</div>
           <div className="info-block"><strong>Duration:</strong> {ride.duration || "6h10"}</div>
           <div className="info-block"><strong>Price:</strong> ₹{ride.price}</div>
-
-          <div className="info-block">
-            <MapPin className="icon" />
-            <div><strong>From:</strong> {ride.from}</div>
-          </div>
-
-          <div className="info-block">
-            <MapPin className="icon" />
-            <div><strong>To:</strong> {ride.to}</div>
-          </div>
+          <div className="info-block"><MapPin className="icon" /><strong>From:</strong> {ride.from}</div>
+          <div className="info-block"><MapPin className="icon" /><strong>To:</strong> {ride.to}</div>
         </div>
 
-        {/* Driver details section */}
         {loading ? (
           <p>Loading driver details...</p>
         ) : error ? (
@@ -89,15 +97,17 @@ function Show_rides_card() {
             <p><strong>Gender:</strong> {driver.gender}</p>
             <p><strong>Language:</strong> {driver.language}</p>
             <p><strong>Occupation:</strong> {driver.occupation}</p>
-            <p><strong>Address:</strong> {driver.address}</p>
 
             <h4>Contact Driver:</h4>
             <Phone className="icon" /> <strong>Phone:</strong> {driver.phone}
-
           </div>
         ) : (
           <p>Driver info not available</p>
         )}
+
+        <button className="book-btn" onClick={handleBookRide}>
+          Book Ride
+        </button>
 
         <button className="go-back-btn" onClick={() => navigate(-1)}>← Back</button>
       </div>

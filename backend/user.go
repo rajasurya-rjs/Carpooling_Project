@@ -85,7 +85,7 @@ func getUserByID(c *gin.Context) {           //getUser?id={userID}
 
 // Adding rider to a ride 
 
-func addRiderToRide(c *gin.Context) {    //addrider?rideId={ride id}&riderId={rider id}
+func addRiderToRide(c *gin.Context) {    //addRider?rideId={ride id}&riderId={rider id}
 	
 	rideIDParam := c.Query("rideId")
 	riderIDParam := c.Query("riderId")
