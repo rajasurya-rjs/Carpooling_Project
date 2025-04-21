@@ -171,6 +171,86 @@ func getRiderRides(c *gin.Context) {              //user/rides?id={userID}
 }
 
 
+func cancelRideForRider(c *gin.Context) {     //  /ride/cancel?rideId={rideID}&riderId{UserIdWhoIsCancellingTheRide}
+	rideIDParam := c.Query("rideId")
+	riderIDParam := c.Query("riderId")
+
+	if rideIDParam == "" || riderIDParam == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing rideId or riderId"})
+		return
+	}
+
+	rideID, err1 := strconv.ParseUint(rideIDParam, 10, 64)
+	riderID, err2 := strconv.ParseInt(riderIDParam, 10, 64)
+
+	if err1 != nil || err2 != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid rideId or riderId"})
+		return
+	}
+
+	var ride Ride
+
+
+	if err := DB.First(&ride, rideID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Ride not found"})
+		return
+	}
+
+	
+	found := false
+	newRiderIDs := make(pq.Int64Array, 0)
+
+	for _, id := range ride.RiderIDs {
+		if id == riderID {
+			found = true
+			continue 
+		}
+		newRiderIDs = append(newRiderIDs, id)
+	}
+
+	if !found {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Rider not found in the ride"})
+		return
+	}
+
+	
+	ride.RiderIDs = newRiderIDs
+	if err := DB.Save(&ride).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to update ride"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Ride cancelled successfully for the rider",
+		"ride":    ride,
+	})
+}
+
+func deleteDriverRide(c *gin.Context) {  // /driver/cancel?rideId={rideID}
+	rideIDParam := c.Query("rideId")
+	if rideIDParam == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing rideId query parameter"})
+		return
+	}
+
+	rideID, err := strconv.ParseUint(rideIDParam, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid rideId format"})
+		return
+	}
+
+	
+	if err := DB.Delete(&Ride{}, rideID).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to delete ride"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status":  "success",
+		"message": fmt.Sprintf("Ride with ID %d has been deleted", rideID),
+	})
+}
+
 
 
 

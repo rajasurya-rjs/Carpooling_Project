@@ -13,12 +13,14 @@ func main() {
 
 	r.GET("/rides", getRides)
 	r.POST("/add", addRide)
-	r.GET("/rides/filter", filterRides)
+	r.GET("/rides/filter?", filterRides)
 	r.POST("/register", registerUser)
 	r.GET("/users", getUsers)
 	r.GET("/driver/rides", getDriverRides)
 	r.GET("/getUser", getUserByID)
 	r.GET("/user/rides", getRiderRides)
 	r.POST("/addRider", addRiderToRide)
+	r.DELETE("/ride/cancel", cancelRideForRider)
+	r.DELETE("driver/cancel", deleteDriverRide)
 	r.Run("localhost:8080")
 }
