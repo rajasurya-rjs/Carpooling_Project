@@ -9,7 +9,9 @@ const UserProfile = () => {
     const fetchUserData = async () => {
       try {
         const userId = parseInt(localStorage.getItem("UserId"));
-        const response = await fetch(`http://localhost:8080/getUser?id=${userId}`);
+        const response = await fetch(
+          `http://localhost:8080/getUser?id=${userId}`
+        );
         if (!response.ok) throw new Error("Failed to fetch user data");
         const data = await response.json();
         setUserData(data);
@@ -28,7 +30,6 @@ const UserProfile = () => {
       name: e.target.name.value,
       email: e.target.email.value,
       phone: e.target.phone.value,
-      age: parseInt(e.target.age.value),
       age: parseInt(e.target.age.value),
       gender: e.target.gender.value,
       language: e.target.language.value,
@@ -141,33 +142,59 @@ const UserProfile = () => {
         <>
           <h2 className="user-profile-title-unique">User Profile</h2>
           <div className="user-profile-info-unique">
-            <p>
-              <strong>Name:</strong> {userData.name}
-            </p>
-            <p>
-              <strong>Email:</strong> {userData.email}
-            </p>
-            <p>
-              <strong>Phone:</strong> {userData.phone}
-            </p>
-            <p>
-              <strong>Age:</strong> {userData.age}
-            </p>
-            <p>
-              <strong>Gender:</strong> {userData.gender}
-            </p>
-            <p>
-              <strong>Language:</strong> {userData.language}
-            </p>
-            <p>
-              <strong>Address:</strong> {userData.address}
-            </p>
-            <p>
-              <strong>Occupation:</strong> {userData.occupation}
-            </p>
+            <div className="profile-grid-container">
+              <div className="profile-grid-row">
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Name:</strong> {userData.name}
+                  </p>
+                </div>
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Email:</strong> {userData.email}
+                  </p>
+                </div>
+              </div>
+              <div className="profile-grid-row">
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Phone:</strong> {userData.phone}
+                  </p>
+                </div>
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Age:</strong> {userData.age}
+                  </p>
+                </div>
+              </div>
+              <div className="profile-grid-row">
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Gender:</strong> {userData.gender}
+                  </p>
+                </div>
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Language:</strong> {userData.language}
+                  </p>
+                </div>
+              </div>
+              <div className="profile-grid-row">
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Address:</strong> {userData.address}
+                  </p>
+                </div>
+                <div className="profile-grid-item">
+                  <p>
+                    <strong>Occupation:</strong> {userData.occupation}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <button onClick={handleEdit} className="user-profile-btn-unique">
-            Edit
+            Edit Profile
           </button>
         </>
       )}
