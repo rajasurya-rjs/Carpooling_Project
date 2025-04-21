@@ -11,41 +11,49 @@ function UpcomingRideList() {
     const fetchRides = async () => {
       try {
         const userId = parseInt(localStorage.getItem("UserId"), 10);
-        if (!userId) console.error("User ID not found in local storage");
+        if (!userId) throw new Error("User ID not found in local storage");
 
         const response = await fetch(
           `http://localhost:8080/driver/rides?id=${userId}`
         );
-        if (!response.ok) console.error("Failed to fetch rides");
+        if (!response.ok) throw new Error("Failed to fetch rides");
 
         const data = await response.json();
-        console.log(data)
         setRides(data);
+        setError(null); // Clear any previous error
       } catch (err) {
         console.error("Error fetching rides:", err);
-
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
     fetchRides();
-    const interval = setInterval(fetchRides, 5000); // Fetch rides every 5 seconds
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    const interval = setInterval(fetchRides, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const sortedRides = useMemo(() => {
-    console.log(rides.length)
-    if(!rides.length) return []
-    return [...rides].sort((a, b) => new Date(a.date) - new Date(b.date));
+    if (!rides.length) return [];
+    return [...rides].sort((a, b) => new Date(a.time) - new Date(b.time));
   }, [rides]);
 
   if (loading) {
-    return <div className="loading-message">Loading upcoming rides...</div>;
+    return (
+      <div className="loading-message" role="status">
+        Loading upcoming rides...
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="error-message">Error: {error}</div>;
+    return (
+      <div className="text-message" role="status">
+        <h3>No upcoming rides available for you at the moment.</h3>
+        <h3>Complete the user and driver profile to publish a ride.</h3>
+      </div>
+    );
   }
 
   return (
@@ -58,7 +66,7 @@ function UpcomingRideList() {
               <div className="upcoming-ride-content">
                 <div className="upcoming-ride-details">
                   <div className="upcoming-ride-route">
-                    <Car size={16} />
+                    <Car size={18} />
                     <span>
                       {ride.from} → {ride.to}
                     </span>
@@ -67,12 +75,23 @@ function UpcomingRideList() {
                     <div className="upcoming-ride-date">
                       <Calendar size={16} />
                       <span>
-                        {new Date(ride.time).toLocaleDateString("en-GB")}
+                        {new Date(ride.time).toLocaleDateString("en-GB", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })}{" "}
+                        @{" "}
+                        {new Date(ride.time).toLocaleTimeString("en-GB", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
                       </span>
                     </div>
                     <div className="upcoming-ride-seats">
                       <User size={16} />
-                      <span>{ride.seats} Seats Available</span>
+                      <span>
+                        {ride.seats} Seat{ride.seats !== 1 && "s"} Available
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -80,7 +99,9 @@ function UpcomingRideList() {
             </div>
           ))
         ) : (
-          <div className="no-rides-message">No upcoming rides available for you.</div>
+          <div className="no-rides-message">
+            <p>No upcoming rides available for you at the moment.</p>
+          </div>
         )}
       </div>
     </div>

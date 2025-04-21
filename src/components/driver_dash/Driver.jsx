@@ -46,25 +46,34 @@ function Driver() {
               <div className="driver-nav-buttons">Home</div>
             </Link>
             <div className="driver-nav-buttons">My Rides</div>
-            <Link to ="/notification"   style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="driver-nav-buttons">Notifications</div>
+            <Link
+              to="/notification"
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              <div className="driver-nav-buttons">Notifications</div>
             </Link>
           </div>
 
           <div className="wrapper2">
-            <Link to ="/help" style ={{textDecoration:"none", color:"inherit"}}>
-            <div className="help">Help</div>
+            <Link
+              to="/help"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <div className="help">Help</div>
             </Link>
-         
+
             <Link
               to="/user-dashboard"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <div className="driver-switch-user">Switch to User</div>
             </Link>
-            <Link to ="/DriverProfile" style={{ textDecoration: "none", color: "inherit" }}>
-                      <div className="profile">Profile</div>
+            <Link
+              to="/DriverProfile"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <div className="profile">Profile</div>
             </Link>
           </div>
         </div>

@@ -309,6 +309,50 @@
   animation: spin 1.5s linear infinite;
 }
 
+/* Styles for the upload document functionality */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1a73e8;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #1557b0;
+}
+
+.upload-button.uploading {
+  background-color: #fbbc05;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+}
+
+.button-icon.spinning {
+  animation: spin 1s linear infinite;
+}
+
 /* Acknowledgment Section */
 .acknowledgment {
   background: linear-gradient(135deg, #ecfdf5 0%, #eff6ff 100%);

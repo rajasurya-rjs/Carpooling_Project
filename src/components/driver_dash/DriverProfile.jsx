@@ -51,6 +51,12 @@ const DriverProfile = () => {
     }, 1500);
   };
 
+  const handleFileUpload = (e, documentType) => {
+    // Logic to handle file upload can be added here
+    console.log(`File uploaded for ${documentType}:`, e.target.files[0]);
+    handleVerify(documentType);
+  };
+
   const documentSections = [
     {
       title: "Vehicle's Owner Documents",
@@ -156,140 +162,150 @@ const DriverProfile = () => {
   const allVerified = Object.values(verificationStatus).every(Boolean);
 
   return (
-    <div className="driver-profile-container">
-      <header className="verification-header">
-        <div className="header-icon">
-          <Shield />
-        </div>
-        <h1>Driver Verification</h1>
-        <p>
-          Complete the verification process by uploading the required documents
-          to activate your driver account.
-        </p>
-
-        <div className="progress-container">
-          <div className="progress-header">
-            <span className="progress-label">Verification Progress</span>
-            <span className="progress-count">
-              {verifiedCount} of {totalDocuments} complete
-            </span>
+    <>
+      <div className="driver-profile-container">
+        <header className="verification-header">
+          <div className="header-icon">
+            <Shield />
           </div>
-          <div className="progress-bar">
-            <div
-              className="progress-fill"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-        </div>
-      </header>
+          <h1>Driver Verification</h1>
+          <p>
+            Complete the verification process by uploading the required
+            documents to activate your driver account.
+          </p>
 
-      <div className="document-sections">
-        {documentSections.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="section-container">
-            <div className="section-header">
-              <div className="section-icon">{section.icon}</div>
-              <h2>{section.title}</h2>
+          <div className="progress-container">
+            <div className="progress-header">
+              <span className="progress-label">Verification Progress</span>
+              <span className="progress-count">
+                {verifiedCount} of {totalDocuments} complete
+              </span>
             </div>
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+          </div>
+        </header>
 
-            <div className="document-segments">
-              {section.documents.map((doc) => (
-                <div
-                  key={doc.id}
-                  className={`document-segment ${
-                    verificationStatus[doc.id] ? "verified" : ""
-                  }`}
-                >
-                  <div className="segment-header">
-                    <div className="segment-title">
-                      <div
-                        className={`segment-icon ${
-                          verificationStatus[doc.id] ? "verified" : ""
-                        }`}
-                      >
-                        {verificationStatus[doc.id] ? (
+        <div className="document-sections">
+          {documentSections.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="section-container">
+              <div className="section-header">
+                <div className="section-icon">{section.icon}</div>
+                <h2>{section.title}</h2>
+              </div>
+
+              <div className="document-segments">
+                {section.documents.map((doc) => (
+                  <div
+                    key={doc.id}
+                    className={`document-segment ${
+                      verificationStatus[doc.id] ? "verified" : ""
+                    }`}
+                  >
+                    <div className="segment-header">
+                      <div className="segment-title">
+                        <div
+                          className={`segment-icon ${
+                            verificationStatus[doc.id] ? "verified" : ""
+                          }`}
+                        >
+                          {verificationStatus[doc.id] ? (
+                            <CheckCircle2 />
+                          ) : (
+                            <FileCheck />
+                          )}
+                        </div>
+                        <h3>{doc.title}</h3>
+                        <div
+                          className="help-icon"
+                          onMouseEnter={() => setActiveTooltip(doc.id)}
+                          onMouseLeave={() => setActiveTooltip(null)}
+                        >
+                          <HelpCircle />
+                          {activeTooltip === doc.id && (
+                            <div className="tooltip">
+                              Further information about{" "}
+                              {doc.title.toLowerCase()} requirements
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      {verificationStatus[doc.id] && (
+                        <span className="verified-badge">
                           <CheckCircle2 />
-                        ) : (
-                          <FileCheck />
-                        )}
-                      </div>
-                      <h3>{doc.title}</h3>
-                      <div
-                        className="help-icon"
-                        onMouseEnter={() => setActiveTooltip(doc.id)}
-                        onMouseLeave={() => setActiveTooltip(null)}
-                      >
-                        <HelpCircle />
-                        {activeTooltip === doc.id && (
-                          <div className="tooltip">
-                            Further information about {doc.title.toLowerCase()}{" "}
-                            requirements
-                          </div>
-                        )}
-                      </div>
+                          Verified
+                        </span>
+                      )}
                     </div>
-                    {verificationStatus[doc.id] && (
-                      <span className="verified-badge">
-                        <CheckCircle2 />
-                        Verified
-                      </span>
+
+                    <ul className="requirement-list">
+                      {doc.items.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+
+                    {!verificationStatus[doc.id] && (
+                      <div className="upload-container">
+                        <input
+                          type="file"
+                          id={`upload-${doc.id}`}
+                          className="file-input"
+                          onChange={(e) => handleFileUpload(e, doc.id)}
+                          disabled={uploadingDoc === doc.id}
+                        />
+                        <label
+                          htmlFor={`upload-${doc.id}`}
+                          className={`upload-button ${
+                            uploadingDoc === doc.id ? "uploading" : ""
+                          }`}
+                        >
+                          {uploadingDoc === doc.id ? (
+                            <>
+                              <AlertCircle className="button-icon spinning" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              <Upload className="button-icon" />
+                              Upload Document
+                            </>
+                          )}
+                        </label>
+                      </div>
                     )}
                   </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
 
-                  <ul className="requirement-list">
-                    {doc.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-
-                  {!verificationStatus[doc.id] && (
-                    <button
-                      className={`upload-button ${
-                        uploadingDoc === doc.id ? "uploading" : ""
-                      }`}
-                      onClick={() => handleVerify(doc.id)}
-                      disabled={uploadingDoc === doc.id}
-                    >
-                      {uploadingDoc === doc.id ? (
-                        <>
-                          <AlertCircle className="button-icon spinning" />
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          <Upload className="button-icon" />
-                          Upload Document
-                        </>
-                      )}
-                    </button>
-                  )}
-                </div>
-              ))}
+        {allVerified && (
+          <div className="acknowledgment">
+            <div className="acknowledgment-icon">
+              <CheckCircle2 />
+            </div>
+            <h2>Verification Complete</h2>
+            <p>
+              Thank you for completing the driver verification process. Your
+              account has been approved, and you can now start accepting rides.
+            </p>
+            <div className="acknowledgment-actions">
+              <button
+                className="primary-button"
+                onClick={() => navigate("/driver_dash")}
+              >
+                Go to Dashboard
+              </button>
             </div>
           </div>
-        ))}
+        )}
       </div>
-
-      {allVerified && (
-        <div className="acknowledgment">
-          <div className="acknowledgment-icon">
-            <CheckCircle2 />
-          </div>
-          <h2>Verification Complete</h2>
-          <p>
-            Thank you for completing the driver verification process. Your
-            account has been approved, and you can now start accepting rides.
-          </p>
-          <div className="acknowledgment-actions">
-            <button
-              className="primary-button"
-              onClick={() => navigate("/driver_dash")}
-            >
-              Go to Dashboard
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 

@@ -19,36 +19,59 @@ function User() {
     setPassengerCount("");
     navigate("/show_rides", { state: formData });
   }
-  
-  
+
   return (
     <div className="user-dash-main">
       <div className="user-dash-nav">
         <div className="user-dash-wrapper1">
-        <Link to="/user-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-  <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-</Link>
-<Link to="/user-dashboard" style={{textDecoration:"none"}}onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="user-dash-feature-item">Home</div>
+          <Link
+            to="/user-dashboard"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
           </Link>
-          <Link to ="/message" style={{textDecoration:"none"}}onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="user-dash-feature-item">Messages</div>
+          <Link
+            to="/user-dashboard"
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="user-dash-feature-item">Home</div>
           </Link>
-          <Link to ="/notification" style={{textDecoration:"none"}}onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="user-dash-feature-item">Notifications</div>
+          <Link
+            to="/message"
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="user-dash-feature-item">Messages</div>
+          </Link>
+          <Link
+            to="/notification"
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="user-dash-feature-item">Notifications</div>
           </Link>
         </div>
-        
 
         <div className="user-dash-wrapper2">
-          <Link to ="/help" style={{textDecoration:"none"}}onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="user-dash-help">Help</div> 
+          <Link
+            to="/help"
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="user-dash-help">Help</div>
           </Link>
-          <Link to="/driver_dash" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            to="/driver_dash"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <div className="user-dash-switch-driver">Switch to Driver</div>
           </Link>
-          <Link to ="/UserProfile" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="user-dash-profile">Profile</div>
+          <Link
+            to="/UserProfile"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div className="user-dash-profile">Profile</div>
           </Link>
         </div>
       </div>
@@ -129,7 +152,6 @@ function User() {
             <button className="user-dash-offerride">Offer Ride</button>
           </Link>
         </div>
-
       </div>
     </div>
   );
