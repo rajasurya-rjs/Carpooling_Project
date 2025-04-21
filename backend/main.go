@@ -13,7 +13,7 @@ func main() {
 
 	r.GET("/rides", getRides)
 	r.POST("/add", addRide)
-	r.GET("/rides/filter?", filterRides)
+	r.GET("/rides/filter", filterRides)
 	r.POST("/register", registerUser)
 	r.GET("/users", getUsers)
 	r.GET("/driver/rides", getDriverRides)
