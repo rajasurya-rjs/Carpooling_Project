@@ -5,8 +5,6 @@ import { MapPin, Calendar, Phone, Star, Clock, Mail, User, Info,
          Languages, AlertTriangle, Shield, ArrowLeft } from "lucide-react";
 =======
 import { MapPin, Calendar, Phone } from "lucide-react";
-import UserNavbar from "../User_dasboard/UserNavbar";
->>>>>>> 97a6392 (implemented separate navbar for user and driver)
 import "./Show_rides_card.css";
 
 function Show_rides_card() {
@@ -157,15 +155,7 @@ function Show_rides_card() {
     );
   }
 
-<<<<<<< HEAD
   return (
-    <div className={`showridescard-wrapper ${isAnimated ? 'animated' : ''}`}>
-      <div className="showridescard-header">
-        <div className="showridescard-header-content">
-          <h1>Ride Details</h1>
-=======
-  return (<>
-    <UserNavbar />
     <div className="ride-card-wrapper">
 
       <div className="ride-card-container">
