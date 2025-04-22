@@ -10,12 +10,13 @@ function ShowRides() {
   const [rides, setRides] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const userID = localStorage.getItem("UserId")
+  console.log(userID)
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:8080/rides/filter?from=${from}&to=${to}&date=${date}`);
+        const response = await fetch(`http://localhost:8080/rides/filter?from=${from}&to=${to}&date=${date}&id=${userID}`);
         if (!response.ok) {
           throw new Error("Failed to fetch rides");
         }
