@@ -92,6 +92,14 @@
 .go-back-btn:hover {
   background-color: #0056b3;
 }
+.book-btn.already-booked {
+  background-color: #dc3545; /* Bootstrap danger red */
+  cursor: not-allowed;
+}
+
+.book-btn.already-booked:hover {
+  background-color: #c82333;
+}
 
 .book-btn {
   margin-top: 1rem;

@@ -7,15 +7,14 @@ function Show_rides_card() {
   const location = useLocation();
   const navigate = useNavigate();
   const { ride } = location.state || {};
-  const [isBooked, setIsBooked] = useState(false);
-
 
   const [driver, setDriver] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isBooked, setIsBooked] = useState(false);
 
   const userId = localStorage.getItem("UserId");
-
+  
   useEffect(() => {
     if (!userId) {
       alert("Please complete your user profile first.");
@@ -37,12 +36,29 @@ function Show_rides_card() {
       }
     }
 
+    async function checkIfAlreadyBooked() {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/ride/hasRider?rideId=${ride.id}&riderId=${userId}`
+        );
+        if (!response.ok) throw new Error("Failed to check booking status");
+        const data = await response.json();
+        setIsBooked(data.isInRide);
+      } catch (error) {
+        console.error("Error checking ride booking status:", error);
+      }
+    }
+
     if (ride?.driver_id) {
       fetchDriverDetails();
     } else {
       setLoading(false);
     }
-  }, [ride, userId, navigate]);
+
+    if (ride?.id && userId) {
+      checkIfAlreadyBooked();
+    }
+  }, [ride?.id, ride?.driver_id, userId, navigate]);
 
   const handleBookRide = async () => {
     try {
@@ -58,6 +74,15 @@ function Show_rides_card() {
       }
 
       alert("Ride booked successfully!");
+
+      // Re-check booking status
+      const checkResponse = await fetch(
+        `http://localhost:8080/ride/hasRider?rideId=${ride.id}&riderId=${userId}`
+      );
+      const checkData = await checkResponse.json();
+      setIsBooked(checkData.isInRide);
+    
+
     } catch (error) {
       console.error("Booking error:", error);
       alert("Failed to book ride. Please try again.");
@@ -72,26 +97,8 @@ function Show_rides_card() {
       </div>
     );
   }
-  useEffect(() => {
-    async function checkIfAlreadyBooked() {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/ride/hasRider?rideId=${ride.id}&riderId=${userId}`
-        );
-        if (!response.ok) throw new Error("Failed to check ride booking status");
-        const data = await response.json();
-        setIsBooked(data.isInRide);
-      } catch (error) {
-        console.error("Error checking ride booking status:", error);
-      }
-    }
-  
-    if (ride?.id && userId) {
-      checkIfAlreadyBooked();
-    }
-  }, [ride?.id, userId]);
-  
-
+  console.log(ride.id);
+  console.log(userId)
   return (
     <div className="ride-card-wrapper">
       <div className="ride-card-container">
@@ -127,7 +134,7 @@ function Show_rides_card() {
         )}
 
 <button
-  className="book-btn"
+  className={`book-btn ${isBooked ? "already-booked" : ""}`}
   onClick={handleBookRide}
   disabled={isBooked}
 >
