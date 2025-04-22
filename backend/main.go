@@ -20,8 +20,8 @@ func main() {
 	r.GET("/getUser", getUserByID)
 	r.GET("/user/rides", getRiderRides)
 	r.POST("/addRider", addRiderToRide)
-	r.GET("ride/hasRider", isRiderInRide)
+	r.GET("/ride/hasRider", isRiderInRide)
 	r.DELETE("/ride/cancel", cancelRideForRider)
-	r.DELETE("driver/cancel", deleteDriverRide)
+	r.DELETE("/driver/cancel", deleteDriverRide)
 	r.Run("localhost:8080")
 }
