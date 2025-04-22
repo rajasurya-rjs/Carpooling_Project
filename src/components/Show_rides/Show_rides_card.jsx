@@ -7,6 +7,8 @@ function Show_rides_card() {
   const location = useLocation();
   const navigate = useNavigate();
   const { ride } = location.state || {};
+  const [isBooked, setIsBooked] = useState(false);
+
 
   const [driver, setDriver] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -70,6 +72,25 @@ function Show_rides_card() {
       </div>
     );
   }
+  useEffect(() => {
+    async function checkIfAlreadyBooked() {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/ride/hasRider?rideId=${ride.id}&riderId=${userId}`
+        );
+        if (!response.ok) throw new Error("Failed to check ride booking status");
+        const data = await response.json();
+        setIsBooked(data.isInRide);
+      } catch (error) {
+        console.error("Error checking ride booking status:", error);
+      }
+    }
+  
+    if (ride?.id && userId) {
+      checkIfAlreadyBooked();
+    }
+  }, [ride?.id, userId]);
+  
 
   return (
     <div className="ride-card-wrapper">
@@ -105,9 +126,14 @@ function Show_rides_card() {
           <p>Driver info not available</p>
         )}
 
-        <button className="book-btn" onClick={handleBookRide}>
-          Book Ride
-        </button>
+<button
+  className="book-btn"
+  onClick={handleBookRide}
+  disabled={isBooked}
+>
+  {isBooked ? "Already Booked" : "Book Ride"}
+</button>
+
 
         <button className="go-back-btn" onClick={() => navigate(-1)}>← Back</button>
       </div>

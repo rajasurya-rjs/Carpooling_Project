@@ -58,7 +58,7 @@ function UpcomingRideList() {
 
   return (
     <div className="upcoming-ride-container">
-      <h2 className="upcoming-ride-title">Upcoming Rides</h2>
+      <h2 className="upcoming-ride-title">Your Upcoming Rides</h2>
       <div className="upcoming-ride-list">
         {sortedRides.length > 0 ? (
           sortedRides.map((ride) => (

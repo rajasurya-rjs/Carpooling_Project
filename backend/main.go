@@ -20,5 +20,7 @@ func main() {
 	r.GET("/getUser", getUserByID)
 	r.GET("/user/rides", getRiderRides)
 	r.POST("/addRider", addRiderToRide)
+	r.DELETE("/ride/cancel", cancelRideForRider)
+	r.DELETE("driver/cancel", deleteDriverRide)
 	r.Run("localhost:8080")
 }
