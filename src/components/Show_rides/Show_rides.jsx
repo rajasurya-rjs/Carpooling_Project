@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Calendar, User } from 'lucide-react';
 import "./Show_rides.css";
-
+import UserNavbar from "../User_dasboard/UserNavbar";
 function ShowRides() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,29 +42,7 @@ function ShowRides() {
 
   return (
     <div className="show-rides-main">
-      <div className="user-dash-nav">
-        <div className="user-dash-wrapper1">
-          <Link to="/user-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-          </Link>
-          <Link to="/user-dashboard" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Home</div>
-          </Link>
-          <Link to="/message" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Messages</div>
-          </Link>
-          <Link to="/notification" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Notifications</div>
-          </Link>
-        </div>
-
-        <div className="user-dash-wrapper2">
-          <Link to="/help" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-help">Help</div>
-          </Link>
-          <div className="user-dash-profile">Profile</div>
-        </div>
-      </div>
+      <UserNavbar />
 
       {loading ? (
         <div className="loading-state">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./User_dash.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import UserNavbar from "./UserNavbar";
 function User() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -22,64 +22,9 @@ function User() {
 
   return (
     <div className="user-dash-main">
-      <div className="user-dash-nav">
-        <div className="user-dash-wrapper1">
-          <Link
-            to="/user-dashboard"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-          </Link>
-          <Link
-            to="/user-dashboard"
-            style={{ textDecoration: "none" }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="user-dash-feature-item">Home</div>
-          </Link>
-          
-          {/* 👇 New link placeholder, replace '/new-route' with actual route */}
-          <Link
-            to="/userdashmyrides"
-            style={{ textDecoration: "none" }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="user-dash-feature-item">My Rides</div>
-          </Link>
-
-
-          <Link
-            to="/notification"
-            style={{ textDecoration: "none" }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="user-dash-feature-item">Notifications</div>
-          </Link>
-        </div>
-
-        <div className="user-dash-wrapper2">
-          <Link
-            to="/help"
-            style={{ textDecoration: "none" }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="user-dash-help">Help</div>
-          </Link>
-          <Link
-            to="/driver_dash"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <div className="user-dash-switch-driver">Switch to Driver</div>
-          </Link>
-          <Link
-            to="/UserProfile"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <div className="user-dash-profile">Profile</div>
-          </Link>
-        </div>
-      </div>
-
+      
+      
+      <UserNavbar />
       <div className="user-dash-content">
         <div className="user-dash-heading">
           <h1>

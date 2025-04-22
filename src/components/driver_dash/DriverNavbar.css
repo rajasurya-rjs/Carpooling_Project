@@ -1,0 +1,152 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #f59e0b;
+    --bg-color: #f8fafc;
+    --nav-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  }
+  .driver-nav-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  }
+  
+  .wrapper1,
+  .wrapper2 {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .driver-nav-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .driver-nav-title:hover {
+    transform: scale(1.05);
+  }
+  
+  .driver-nav-buttons {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .driver-nav-buttons::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .driver-nav-buttons:hover::after {
+    width: 80%;
+  }
+  
+  .driver-nav-buttons:hover {
+    color: var(--primary-color);
+    background-color: rgba(241, 245, 249, 0.8);
+  }
+  
+  .help,
+  .profile {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .help:hover,
+  .profile:hover {
+    background-color: rgba(241, 245, 249, 0.8);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+  
+  .driver-switch-user {
+    background: var(--gradient);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .driver-switch-user:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Responsive Design */
+@media (max-width: 768px) {
+    .driver-nav-container {
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+    }
+  
+    .wrapper1,
+    .wrapper2 {
+      width: 100%;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .driver-nav-buttons,
+    .help,
+    .profile,
+    .driver-switch-user {
+      width: 100%;
+      text-align: center;
+    }
+  
+    
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .wrapper1,
+    .wrapper2 {
+      gap: 1rem;
+    }
+  
+    .driver-nav-container {
+      padding: 1rem;
+    }
+  
+  }

@@ -3,7 +3,6 @@ import "./Driver.css";
 import { Link } from "react-router-dom";
 import UpcomingRideList from "./UpcomingRideList";
 import CreateRide from "./CreateRide";
-
 function Driver() {
   const [showCreateRide, setShowCreateRide] = useState(false);
   const [upcomingRides, setUpcomingRides] = useState([]);
@@ -30,53 +29,6 @@ function Driver() {
           showCreateRide ? "blur-background" : ""
         }`}
       >
-        <div className="driver-nav-container">
-          <div className="wrapper1">
-            <img
-              className="user-dash-logo"
-              src="/logo.png"
-              alt="User Logo"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            />
-            <Link
-              to="/driver_dash"
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              <div className="driver-nav-buttons">Home</div>
-            </Link>
-            <div className="driver-nav-buttons">My Rides</div>
-            <Link
-              to="/notification"
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              <div className="driver-nav-buttons">Notifications</div>
-            </Link>
-          </div>
-
-          <div className="wrapper2">
-            <Link
-              to="/help"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="help">Help</div>
-            </Link>
-
-            <Link
-              to="/user-dashboard"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="driver-switch-user">Switch to User</div>
-            </Link>
-            <Link
-              to="/DriverProfile"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div className="profile">Profile</div>
-            </Link>
-          </div>
-        </div>
 
         <div className="driver-content">
           <div className="heading">

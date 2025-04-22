@@ -1,6 +1,6 @@
 import "./Message.css"
 import { Link } from "react-router-dom";
-
+import DriverNavbar from "../driver_dash/DriverNavbar";
   function ConstructionIcon() {
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -15,13 +15,6 @@ import { Link } from "react-router-dom";
   function App() {
     return (
       <div className="message-app-container">
-        <nav className="message-nav-bar"></nav>
-
-        <div className="message-back-button">
-          <Link to="/user-dashboard" style={{ textDecoration: "none", color: "inherit" }}>
-            <button>Back to Dashboard</button>
-          </Link>
-        </div>
 
         <main className="message-main-content">
           <div className="app-container">

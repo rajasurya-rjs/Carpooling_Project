@@ -2,43 +2,50 @@
 .upcoming-ride-container {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2.5rem;
   background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
-  border-radius: 24px;
-  box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.1);
+  border-radius: 28px;
+  box-shadow: 0 6px 32px -6px rgba(0, 0, 0, 0.15);
+  overflow-x: hidden;
+  transition: all 0.4s ease-in-out;
 }
 
 /* Title styles */
 .upcoming-ride-title {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2.75rem;
+  font-weight: 900;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   background: linear-gradient(to right, #1a73e8, #34a853);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.6px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 
-/* Ride list grid */
+/* Ride list flexbox */
 .upcoming-ride-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
 /* Card styles */
 .upcoming-ride-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 1.5rem;
+  flex: 1 1 calc(33.333% - 2rem); /* Adjust width for 3 cards per row */
+  max-width: calc(33.333% - 2rem); /* Prevent cards from growing too large */
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  padding: 1.75rem;
   border: 1px solid rgba(226, 232, 240, 0.8);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  animation: fadeIn 0.5s ease-out forwards;
-  transition: all 0.4s ease;
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.6s ease-out forwards;
+  transition: all 0.35s ease-in-out;
+  cursor: pointer;
 }
 
 .upcoming-ride-card::before {
@@ -55,8 +62,8 @@
 }
 
 .upcoming-ride-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.2);
   border-color: #1a73e8;
 }
 
@@ -69,40 +76,47 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #2d3748;
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .upcoming-ride-route svg {
   color: #1a73e8;
+  transition: transform 0.3s ease;
+}
+
+.upcoming-ride-card:hover .upcoming-ride-route svg {
+  transform: scale(1.1);
 }
 
 /* Ride info section */
 .upcoming-ride-info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
 }
 
 .upcoming-ride-date,
 .upcoming-ride-seats {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: rgba(241, 245, 249, 0.6);
-  transition: background 0.3s ease;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 14px;
+  background: rgba(241, 245, 249, 0.65);
+  transition: background 0.3s ease, transform 0.3s ease;
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .upcoming-ride-date:hover,
 .upcoming-ride-seats:hover {
-  background: rgba(241, 245, 249, 0.9);
+  background: rgba(241, 245, 249, 0.92);
+  transform: scale(1.03);
 }
 
 .upcoming-ride-date svg {
@@ -123,40 +137,41 @@
 .no-rides-message {
   text-align: center;
   padding: 3rem;
-  margin: 2rem 0;
-  border-radius: 16px;
-  font-size: 1.125rem;
+  margin: 2.5rem 0;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .loading-message {
-  background: rgba(241, 245, 249, 0.6);
+  background: rgba(241, 245, 249, 0.65);
   color: #64748b;
 }
 
 .text-message {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2.5rem;
-  border-radius: 1.5rem;
-  color:#2563eb;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2.8rem;
+  border-radius: 1.75rem;
+  color: #2563eb;
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.85);
 }
 
 .no-rides-message {
-  background: rgba(241, 245, 249, 0.6);
+  background: rgba(241, 245, 249, 0.7);
   color: #64748b;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 /* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -167,20 +182,20 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .upcoming-ride-container {
-    padding: 1rem;
+    padding: 1.25rem;
     margin: 1rem;
   }
 
   .upcoming-ride-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .upcoming-ride-list {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .upcoming-ride-info {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }
 

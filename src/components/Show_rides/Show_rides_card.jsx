@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MapPin, Calendar, Phone } from "lucide-react";
+import UserNavbar from "../User_dasboard/UserNavbar";
 import "./Show_rides_card.css";
 
 function Show_rides_card() {
@@ -71,8 +72,10 @@ function Show_rides_card() {
     );
   }
 
-  return (
+  return (<>
+    <UserNavbar />
     <div className="ride-card-wrapper">
+
       <div className="ride-card-container">
         <h2>Ride Details</h2>
 
@@ -112,7 +115,9 @@ function Show_rides_card() {
         <button className="go-back-btn" onClick={() => navigate(-1)}>← Back</button>
       </div>
     </div>
-  );
+
+  </>
+      );
 }
 
 export default Show_rides_card;

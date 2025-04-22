@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
-
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -59,8 +58,9 @@ const UserProfile = () => {
 
   const handleEdit = () => setIsEditing(true);
 
-  return (
-    <div className="user-profile-container-unique">
+  return (<>
+  <div className="user-profile-container-unique">
+      
       {isEditing || !userData ? (
         <>
           <h2 className="user-profile-title-unique">Fill Your Profile</h2>
@@ -199,6 +199,8 @@ const UserProfile = () => {
         </>
       )}
     </div>
+  </>
+    
   );
 };
 
