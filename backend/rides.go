@@ -252,6 +252,51 @@ func deleteDriverRide(c *gin.Context) {  // /driver/cancel?rideId={rideID}
 }
 
 
+func isRiderInRide(c *gin.Context) {     //ride/hasRider?rideId={rideId}&riderId={UserId}
+	rideIDParam := c.Query("rideId")
+	riderIDParam := c.Query("riderId")
+
+	if rideIDParam == "" || riderIDParam == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing rideId or riderId query parameter"})
+		return
+	}
+
+	rideID, err := strconv.ParseUint(rideIDParam, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid rideId format"})
+		return
+	}
+
+	riderID, err := strconv.ParseInt(riderIDParam, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Invalid riderId format"})
+		return
+	}
+
+	var ride Ride
+	if err := DB.First(&ride, rideID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Ride not found"})
+		return
+	}
+
+	
+	for _, id := range ride.RiderIDs {
+		if id == riderID {
+			c.JSON(http.StatusOK, gin.H{
+				"isInRide": true,
+				"message":  "Rider is already in this ride",
+			})
+			return
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"isInRide": false,
+		"message":  "Rider is not in this ride",
+	})
+}
+
+
 
 
 
