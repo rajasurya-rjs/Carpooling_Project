@@ -4,13 +4,18 @@ import './DriverNavbar.css'
 function DriverNavbar() {
   return (
     <div className="driver-nav-container">
+        
+      
     <div className="wrapper1">
-      <img
+    <Link to="/driver-dashboard"
+        style={{ textDecoration: "none", color: "inherit" }}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      > <img
         className="user-dash-logo"
         src="/logo.png"
         alt="User Logo"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      />
+      /></Link>
       <Link
         to="/driver-dashboard"
         style={{ textDecoration: "none", color: "inherit" }}

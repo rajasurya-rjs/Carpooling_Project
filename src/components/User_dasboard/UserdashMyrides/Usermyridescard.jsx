@@ -152,7 +152,6 @@ function Usermyridescard() {
                   <div className="usermyridescard-location-details">
                     <h3>Pickup Location</h3>
                     <p>{ride.from}</p>
-
                   </div>
                 </div>
                 <div className="usermyridescard-journey-line"></div>
