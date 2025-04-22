@@ -118,8 +118,7 @@ function Usermyridescard() {
     <div className={`usermyridescard-wrapper ${isAnimated ? 'animated' : ''}`}>
       <div className="usermyridescard-header">
         <div className="usermyridescard-header-content">
-          <h1>Ride Details</h1>
-          <p className="usermyridescard-id">ID: {ride.id}</p>
+          <h1 style={{color:"white"}}>Ride Details</h1>
         </div>
         <div className="usermyridescard-status-badge">
           <span className={`usermyridescard-status usermyridescard-status-${ride.status || 'confirmed'}`}>
