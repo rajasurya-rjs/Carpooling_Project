@@ -28,7 +28,7 @@ const UserdashMyrides = () => {
     fetchRides();
   }, []);
 
-  return (
+  return (<>
     <div className="myrides-main">
       <h2 className="myrides-title">My Booked Rides</h2>
 
@@ -101,7 +101,9 @@ const UserdashMyrides = () => {
         </div>
       )}
     </div>
-  );
+
+    </>
+      );
 };
 
 export default UserdashMyrides;

@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { MapPin, Calendar, Phone, Star, Clock, Mail, User, Info, 
          Languages, AlertTriangle, Shield, ArrowLeft } from "lucide-react";
+=======
+import { MapPin, Calendar, Phone } from "lucide-react";
+import UserNavbar from "../User_dasboard/UserNavbar";
+>>>>>>> 97a6392 (implemented separate navbar for user and driver)
 import "./Show_rides_card.css";
 
 function Show_rides_card() {
@@ -152,11 +157,27 @@ function Show_rides_card() {
     );
   }
 
+<<<<<<< HEAD
   return (
     <div className={`showridescard-wrapper ${isAnimated ? 'animated' : ''}`}>
       <div className="showridescard-header">
         <div className="showridescard-header-content">
           <h1>Ride Details</h1>
+=======
+  return (<>
+    <UserNavbar />
+    <div className="ride-card-wrapper">
+
+      <div className="ride-card-container">
+        <h2>Ride Details</h2>
+
+        <div className="ride-info">
+          <div className="info-block"><Calendar className="icon" /><strong>Date:</strong> {ride.time}</div>
+          <div className="info-block"><strong>Duration:</strong> {ride.duration || "6h10"}</div>
+          <div className="info-block"><strong>Price:</strong> ₹{ride.price}</div>
+          <div className="info-block"><MapPin className="icon" /><strong>From:</strong> {ride.from}</div>
+          <div className="info-block"><MapPin className="icon" /><strong>To:</strong> {ride.to}</div>
+>>>>>>> 97a6392 (implemented separate navbar for user and driver)
         </div>
         <div className="showridescard-status-badge">
           <span className={`showridescard-status showridescard-status-${isBooked ? 'confirmed' : 'available'}`}>
@@ -369,7 +390,9 @@ function Show_rides_card() {
         </button>
       </div>
     </div>
-  );
+
+  </>
+      );
 }
 
 export default Show_rides_card;

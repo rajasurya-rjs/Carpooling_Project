@@ -1,6 +1,5 @@
 import "./Notification.css";
 import { Link } from "react-router-dom";
-
 function ConstructionIcon() {
   return (
     <svg
@@ -20,16 +19,8 @@ function ConstructionIcon() {
 }
 
 function Notification() {
-  return (
+  return (<>
     <div className="notification-app-container">
-      <nav className="notification-nav-bar"></nav>
-
-      <div className="notification-back-button">
-        <Link to="/user-dashboard" style={{ textDecoration: "none", color: "inherit" }}>
-          <button>Back to Dashboard</button>
-        </Link>
-      </div>
-
       <main className="notification-main-content">
         <div className="notification-app-wrapper">
           <main className="notification-main-wrapper">
@@ -52,6 +43,8 @@ function Notification() {
         </div>
       </main>
     </div>
+  </>
+    
   );
 }
 

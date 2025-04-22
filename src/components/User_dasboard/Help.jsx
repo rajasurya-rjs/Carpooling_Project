@@ -1,9 +1,10 @@
 import React from 'react';
 import './Help.css';
-
 function Help() {
-  return (
-    <div className="help-page-container">
+  return (<>
+    <div className="help-page">
+      
+      <div className="help-page-container">
       <header className="help-header">
         <h1 className="help-title">Need Assistance? We're Here to Help!</h1>
         <p className="help-subtitle">Reach out to us for any queries or support.</p>
@@ -41,6 +42,9 @@ function Help() {
       </main>
 
     </div>
+    </div>
+      </>
+    
   );
 }
 
