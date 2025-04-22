@@ -42,7 +42,7 @@ func getRides(c *gin.Context) { // for debuggin purposes    /rides
 	c.IndentedJSON(http.StatusOK, &data)
 }
 
-func addRide(c *gin.Context) {           //add
+func addRide(c *gin.Context) { //add
 	var newRide Ride
 	if err := c.BindJSON(&newRide); err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -65,14 +65,15 @@ func addRide(c *gin.Context) {           //add
 
 }
 
-func filterRides(c *gin.Context) {         //rides/filter
+func filterRides(c *gin.Context) {   // /rides/filter?from={from}&to={to}&date{date}&id={userID}
 	from := c.Query("from")
 	to := c.Query("to")
 	dateStr := c.Query("date")
+	userIDStr := c.Query("id")
 
-	if from == "" || to == "" || dateStr == "" {
+	if from == "" || to == "" || dateStr == "" || userIDStr == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"message": "Missing required query parameters: 'from', 'to', and 'date' are required",
+			"message": "Missing required query parameters: 'from', 'to', 'date', and 'userId' are required",
 		})
 		return
 	}
@@ -85,9 +86,18 @@ func filterRides(c *gin.Context) {         //rides/filter
 		return
 	}
 
+	userID, err := strconv.ParseUint(userIDStr, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Invalid userId format",
+		})
+		return
+	}
+
 	var rides []Ride
 
-	err = DB.Where("origin = ? AND destination = ? AND DATE(date) = ?", from, to, queryDate.Format("2006-01-02")).Find(&rides).Error
+	err = DB.Where("origin = ? AND destination = ? AND DATE(date) = ? AND driver_id != ?", from, to, queryDate.Format("2006-01-02"), userID).
+		Find(&rides).Error
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Database query failed",
@@ -97,7 +107,7 @@ func filterRides(c *gin.Context) {         //rides/filter
 
 	if len(rides) == 0 {
 		c.JSON(http.StatusOK, gin.H{
-			"rides":   []Ride{}, // Include an empty rides array
+			"rides":   []Ride{},
 			"message": "No rides found matching the criteria",
 		})
 		return
@@ -108,7 +118,7 @@ func filterRides(c *gin.Context) {         //rides/filter
 
 //Driver Rides
 
-func getDriverRides(c *gin.Context) {    //driver/rides?id={driverID}
+func getDriverRides(c *gin.Context) { //driver/rides?id={driverID}
 	driverIDparam := c.Query("id")
 
 	if driverIDparam == "" {
@@ -116,7 +126,7 @@ func getDriverRides(c *gin.Context) {    //driver/rides?id={driverID}
 		return
 	}
 
-	driverID, err := strconv.Atoi(driverIDparam) 
+	driverID, err := strconv.Atoi(driverIDparam)
 	if err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "Invalid driverID format"})
 		return
@@ -140,7 +150,7 @@ func getDriverRides(c *gin.Context) {    //driver/rides?id={driverID}
 	c.IndentedJSON(http.StatusOK, rides)
 }
 
-func getRiderRides(c *gin.Context) {              //user/rides?id={userID}
+func getRiderRides(c *gin.Context) { //user/rides?id={userID}
 	riderIDParam := c.Query("id")
 	if riderIDParam == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing riderId query parameter"})
@@ -170,8 +180,7 @@ func getRiderRides(c *gin.Context) {              //user/rides?id={userID}
 	c.IndentedJSON(http.StatusOK, rides)
 }
 
-
-func cancelRideForRider(c *gin.Context) {     //  /ride/cancel?rideId={rideID}&riderId{UserIdWhoIsCancellingTheRide}
+func cancelRideForRider(c *gin.Context) { //  /ride/cancel?rideId={rideID}&riderId{UserIdWhoIsCancellingTheRide}
 	rideIDParam := c.Query("rideId")
 	riderIDParam := c.Query("riderId")
 
@@ -190,20 +199,18 @@ func cancelRideForRider(c *gin.Context) {     //  /ride/cancel?rideId={rideID}&r
 
 	var ride Ride
 
-
 	if err := DB.First(&ride, rideID).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"message": "Ride not found"})
 		return
 	}
 
-	
 	found := false
 	newRiderIDs := make(pq.Int64Array, 0)
 
 	for _, id := range ride.RiderIDs {
 		if id == riderID {
 			found = true
-			continue 
+			continue
 		}
 		newRiderIDs = append(newRiderIDs, id)
 	}
@@ -213,7 +220,6 @@ func cancelRideForRider(c *gin.Context) {     //  /ride/cancel?rideId={rideID}&r
 		return
 	}
 
-	
 	ride.RiderIDs = newRiderIDs
 	if err := DB.Save(&ride).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to update ride"})
@@ -226,7 +232,7 @@ func cancelRideForRider(c *gin.Context) {     //  /ride/cancel?rideId={rideID}&r
 	})
 }
 
-func deleteDriverRide(c *gin.Context) {  // /driver/cancel?rideId={rideID}
+func deleteDriverRide(c *gin.Context) { // /driver/cancel?rideId={rideID}
 	rideIDParam := c.Query("rideId")
 	if rideIDParam == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Missing rideId query parameter"})
@@ -239,7 +245,6 @@ func deleteDriverRide(c *gin.Context) {  // /driver/cancel?rideId={rideID}
 		return
 	}
 
-	
 	if err := DB.Delete(&Ride{}, rideID).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to delete ride"})
 		return
@@ -251,8 +256,7 @@ func deleteDriverRide(c *gin.Context) {  // /driver/cancel?rideId={rideID}
 	})
 }
 
-
-func isRiderInRide(c *gin.Context) {     //ride/hasRider?rideId={rideId}&riderId={UserId}
+func isRiderInRide(c *gin.Context) { //ride/hasRider?rideId={rideId}&riderId={UserId}
 	rideIDParam := c.Query("rideId")
 	riderIDParam := c.Query("riderId")
 
@@ -279,7 +283,6 @@ func isRiderInRide(c *gin.Context) {     //ride/hasRider?rideId={rideId}&riderId
 		return
 	}
 
-	
 	for _, id := range ride.RiderIDs {
 		if id == riderID {
 			c.JSON(http.StatusOK, gin.H{
@@ -295,8 +298,3 @@ func isRiderInRide(c *gin.Context) {     //ride/hasRider?rideId={rideId}&riderId
 		"message":  "Rider is not in this ride",
 	})
 }
-
-
-
-
-
