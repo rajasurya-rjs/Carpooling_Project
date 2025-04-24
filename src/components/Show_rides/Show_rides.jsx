@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { MapPin, Calendar } from 'lucide-react';
+import UserNavbar from "../User_dasboard/UserNavbar";
 import "./Show_rides.css";
 
 function ShowRides() {
@@ -15,14 +16,14 @@ function ShowRides() {
   useEffect(() => {
     async function fetchData() {
       try {
-        setLoading(true);
+        setLoading(true); // ✅ Corrected this line
         const response = await fetch(`http://localhost:8080/rides/filter?from=${from}&to=${to}&date=${date}&id=${userID}`);
         if (!response.ok) {
           throw new Error("Failed to fetch rides");
         }
         const data = await response.json();
         if (Array.isArray(data)) {
-          console.log(rides);
+          console.log(data); // changed from `rides` to `data` to log the correct array
           setRides(data);
         } else {
           setRides([]);
@@ -34,38 +35,19 @@ function ShowRides() {
         setLoading(false);
       }
     }
+  
     if (from && to && date) {
       fetchData();
     } else {
       setLoading(false);
     }
   }, [from, to, date]);
-
-  return (
+  
+  return (<>
+    <UserNavbar />
     <div className="show-rides-main">
-      <div className="user-dash-nav">
-        <div className="user-dash-wrapper1">
-          <Link to="/user-dashboard" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img className="user-dash-logo" src="/logo.png" alt="User Logo" />
-          </Link>
-          <Link to="/user-dashboard" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Home</div>
-          </Link>
-          <Link to="/message" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Messages</div>
-          </Link>
-          <Link to="/notification" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-feature-item">Notifications</div>
-          </Link>
-        </div>
+      
 
-        <div className="user-dash-wrapper2">
-          <Link to="/help" style={{ textDecoration: "none" }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="user-dash-help">Help</div>
-          </Link>
-          <div className="user-dash-profile">Profile</div>
-        </div>
-      </div>
 
       {loading ? (
         <div className="loading-state">
@@ -140,6 +122,8 @@ function ShowRides() {
         </>
       )}
     </div>
+  </>
+    
   );
 }
 

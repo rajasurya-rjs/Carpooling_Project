@@ -376,7 +376,29 @@ function Usermyridescard() {
       <div className="usermyridescard-action-bar">
         <div className="usermyridescard-actions">
           {(ride.status || 'confirmed') === 'confirmed' && (
-            <button className="usermyridescard-action-button usermyridescard-cancel-ride-button">
+            <button 
+              className="usermyridescard-action-button usermyridescard-cancel-ride-button" 
+              onClick={async () => {
+                try {
+                  const response = await fetch(
+                    `http://localhost:8080/ride/cancel?rideId=${ride.id}&riderId=${localStorage.getItem('UserId')}`,
+                    {
+                      method: 'DELETE',
+                    }
+                  );
+
+                  if (!response.ok) {
+                    throw new Error('Failed to cancel the ride');
+                  }
+
+                  alert('Ride cancelled successfully');
+                  navigate('/userdashmyrides'); // Redirect to My Rides page
+                } catch (error) {
+                  console.error('Error cancelling the ride:', error);
+                  alert('Failed to cancel the ride. Please try again later.');
+                }
+              }}
+            >
               <X size={16} /> Cancel Ride
             </button>
           )}

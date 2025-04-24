@@ -15,7 +15,7 @@ import UserProfile from "./components/User_dasboard/UserProfile";
 import DriverProfile from "./components/driver_dash/DriverProfile";
 import Show_rides_card from "./components/Show_rides/Show_rides_card";
 import UserdashMyrides from "./components/User_dasboard/UserdashMyrides/UserdashMyrides";
-import Usermyridescard from "./components/User_dasboard/UserdashMyrides/usermyridescard";
+import Usermyridescard from "./components/User_dasboard/UserdashMyrides/Usermyridescard";
 import UserNavbar from "./components/User_dasboard/UserNavbar";
 import DriverNavbar from "./components/driver_dash/DriverNavbar";
 function App() {

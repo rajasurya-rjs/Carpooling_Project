@@ -17,8 +17,6 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -33,16 +31,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  animation: fadeIn 0.8s var(--transition-smooth);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  width: 100vw; /* Ensure it spans the full width of the viewport */
+  max-width: 100%; /* Prevent any restrictions on width */
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
 }
 
 .user-dash-feature-item {
@@ -50,28 +42,9 @@ body {
   border-radius: 0.75rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   font-weight: 500;
   position: relative;
-  overflow: hidden;
-}
-
-.user-dash-feature-item::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(37, 99, 235, 0.1);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
-
-.user-dash-feature-item:hover::before {
-  width: 200%;
-  height: 200%;
 }
 
 .user-dash-feature-item::after {
@@ -82,18 +55,17 @@ body {
   width: 0;
   height: 2px;
   background: var(--gradient);
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   transform: translateX(-50%);
 }
 
 .user-dash-feature-item:hover::after {
   width: 80%;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
 }
 
 .user-dash-feature-item:hover {
   color: var(--primary-color);
-  transform: translateY(-2px);
+  background-color: rgba(241, 245, 249, 0.8);
 }
 
 .user-dash-help,
@@ -102,32 +74,8 @@ body {
   border-radius: 0.75rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   font-weight: 500;
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-help::before,
-.user-dash-profile::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: 0.5s;
-}
-
-.user-dash-help:hover::before,
-.user-dash-profile:hover::before {
-  left: 100%;
 }
 
 .user-dash-help:hover,
@@ -143,27 +91,9 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   cursor: pointer;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   font-weight: 500;
   box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-switch-driver::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
-  transform: scale(0);
-  transition: transform 0.6s ease-out;
-}
-
-.user-dash-switch-driver:hover::after {
-  transform: scale(1);
 }
 
 .user-dash-switch-driver:hover {
@@ -179,13 +109,6 @@ body {
   padding: 6rem 2rem;
   margin-bottom: 2rem;
   position: relative;
-  animation: gradientShift 10s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .user-dash-heading {
@@ -203,18 +126,7 @@ body {
   line-height: 1.2;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  animation: fadeInDown 1s var(--transition-bounce);
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradientText 5s ease infinite;
-}
-
-@keyframes gradientText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  animation: fadeInDown 1s ease-out;
 }
 
 @keyframes fadeInDown {
@@ -228,14 +140,16 @@ body {
   }
 }
 
+/* Ensure user-dash-content occupies full width */
 .user-dash-content {
-  width: 100%;
-  max-width: none;
-  margin-top: 1rem;
+  width: 100%; /* Set to occupy full width */
+  max-width: none; /* Remove any width restrictions */
+  margin-top: 1rem; /* Reduce excessive margin */
   padding: 2rem;
   flex-grow: 1;
 }
 
+/* Updated input-field styles */
 .user-dash-input-field {
   display: flex;
   flex-wrap: wrap;
@@ -246,38 +160,8 @@ body {
   box-shadow: var(--shadow-lg);
   margin-bottom: 3rem;
   backdrop-filter: blur(10px);
-  animation: slideUp 0.8s var(--transition-bounce);
+  animation: slideUp 0.8s ease-out;
   justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-input-field::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0) 60%
-  );
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.user-dash-input-field:hover::before {
-  opacity: 0.3;
-  animation: rotate 15s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .user-dash-input-field input {
@@ -286,17 +170,16 @@ body {
   border: 2px solid #e2e8f0;
   border-radius: 0.75rem;
   font-size: 1rem;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.9);
   min-width: 220px;
-  position: relative;
 }
 
 .user-dash-input-field input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .user-dash-input-field .user-dash-search {
@@ -309,26 +192,8 @@ body {
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-input-field .user-dash-search::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 50%);
-  transform: scale(0);
-  transition: transform 0.6s ease-out;
-}
-
-.user-dash-input-field .user-dash-search:hover::after {
-  transform: scale(1);
 }
 
 .user-dash-input-field .user-dash-search:hover {
@@ -341,6 +206,7 @@ body {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -371,7 +237,12 @@ body {
   height: 3px;
   background: var(--gradient);
   border-radius: 2px;
-  transition: width 0.4s var(--transition-bounce);
+}
+
+.user-dash-context p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.1rem;
 }
 
 .user-dash-cont1,
@@ -381,45 +252,17 @@ body {
   padding: 2.5rem;
   border-radius: 1.5rem;
   box-shadow: var(--shadow-md);
-  transition: all 0.5s var(--transition-bounce);
+  transition: all 0.4s ease;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(226, 232, 240, 0.8);
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-cont1::before,
-.user-dash-cont2::before,
-.user-dash-cont3::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.user-dash-cont1:hover::before,
-.user-dash-cont2:hover::before,
-.user-dash-cont3:hover::before {
-  transform: translateX(100%);
 }
 
 .user-dash-cont1:hover,
 .user-dash-cont2:hover,
 .user-dash-cont3:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
   background-color: rgba(255, 255, 255, 0.95);
-}
-
-.user-dash-cont1:hover h3::after,
-.user-dash-cont2:hover h3::after,
-.user-dash-cont3:hover h3::after {
-  width: 100%;
 }
 
 .user-dash-drive {
@@ -431,32 +274,6 @@ body {
   margin: 4rem 0;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(226, 232, 240, 0.8);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.5s var(--transition-bounce);
-}
-
-.user-dash-drive::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.user-dash-drive:hover::before {
-  opacity: 1;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
 }
 
 .user-dash-drive h2 {
@@ -464,7 +281,6 @@ body {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-weight: 800;
-  position: relative;
 }
 
 .user-dash-drive p {
@@ -484,26 +300,8 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s var(--transition-bounce);
+  transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-
-.user-dash-offerride::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 50%);
-  transform: scale(0);
-  transition: transform 0.6s ease-out;
-}
-
-.user-dash-offerride:hover::after {
-  transform: scale(1);
 }
 
 .user-dash-offerride:hover {
@@ -511,7 +309,59 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+.user-dash-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: bounce 1s infinite;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  width: 250px;
+  font-size: 0.9rem;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.user-dash-notification p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.user-dash-notification .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-dash-notification .close-btn:hover {
+  transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
+  
   .user-dash-feature-item,
   .user-dash-help,
   .user-dash-profile,
@@ -553,6 +403,7 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+
   .user-dash-heading h1 {
     font-size: 3rem;
   }
@@ -563,16 +414,5 @@ body {
 
   .user-dash-input-field {
     gap: 0.75rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
